@@ -174,3 +174,13 @@ const updateBooks = {
   pages: 123,
 };
 console.log(updateBooks);
+
+///////////////////////////////////////
+//Short-Circuiting
+
+console.log(0 && "Some String");
+console.log("" || "gülşah");
+console.log(undefined ?? false);
+console.log(false ?? "b");
+console.log("" ?? "a");
+console.log(0 ?? "a");
