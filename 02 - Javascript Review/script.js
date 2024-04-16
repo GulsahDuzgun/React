@@ -162,3 +162,15 @@ const [first, second] = genres;
 const [justFirst] = genres;
 const [...others] = genres;
 console.log(first, second, others);
+
+///////////////////////////////////////
+//Rest/Spread Operator
+console.log(...genres);
+console.log(genres);
+
+const updateBooks = {
+  ...book,
+  city: "New York",
+  pages: 123,
+};
+console.log(updateBooks);
