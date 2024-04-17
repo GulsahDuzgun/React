@@ -9,5 +9,6 @@
 > - _**What is Props?** Props are used to pass data from parent components to child components(down the component tree). And Props are essential tool to configure and customize components(like function parameters). Anything can be passed as props: single values, arrays, objects, functions, even other components. ,_
 > - _Components made of data, logic, apperance. Data consists of State and Props. Props are read-only and immutable. Props is data coming from the outside, and can only be updated by the parent component. State is internal data that can be updated by the component's logic. If you need to mutate props, you actually need state. ,_
 > - _ React has one-way data flow(props) because mutating props(an object) would affect parent's data, creating side effects. Immutable props allows React to avoid bugs and make apps predictable,_
+> - _JSX works essentially like HTML, but we can enter "Javascript mode" by using {}. We can place Javascript expression inside {}. Examples: reference variablesi create arrays or objects,map(), ternary operator but Statements are not allowed (else-if, for, switch). JSX produces a Javascript expression. A piece of JSX can have one root element. ,_
 >
 > #
