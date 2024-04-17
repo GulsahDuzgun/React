@@ -58,7 +58,6 @@ function App() {
 }
 
 function Pizza(props) {
-  console.log(props);
   return (
     <li className="pizza">
       <img src={props.pizzaData.photoName} alt={props.pizzaData.name} />
@@ -85,13 +84,16 @@ function Header() {
 }
 
 function Main() {
+  const pizzas = [...pizzaData];
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
       <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaData={pizza} />
-        ))}
+        {pizzas.length > 0 &&
+          pizzaData.map((pizza) => (
+            <Pizza pizzaData={pizza} key={pizza.name} />
+          ))}
       </ul>
     </main>
   );
@@ -106,7 +108,14 @@ function Footer() {
 
   return (
     <footer className="footer">
-      We are currently {isOpen ? "open" : "close"}
+      {isOpen && (
+        <div className="order">
+          <p>
+            We are open until {closeHour}.00. Come visit us or order online.
+          </p>
+          <button className="btn">Order</button>
+        </div>
+      )}
     </footer>
   );
 
