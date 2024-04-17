@@ -212,3 +212,16 @@ const essentialData2 = books.map((book) => ({
 
 console.log(essentialData);
 console.log(essentialData2);
+
+///////////////////////////////////////
+//The Array filter Method
+
+const longBooksWithMovie = books
+  .filter((b) => b.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+console.log(longBooksWithMovie);
+
+const adventureBooks = books
+  .filter((b) => b.genres.includes("adventure"))
+  .map((b) => b.title);
+console.log(adventureBooks);
