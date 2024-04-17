@@ -285,3 +285,21 @@ fetch("https://jsonplaceholder.typicode.com/posts/1")
   });
 
 console.log("Third");
+
+///////////////////////////////////////
+//Asynchronous Javascript: Async/Await
+
+async function getPosts() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts/2");
+  const data = await res.json();
+  console.log("Second");
+  console.log(data);
+  return data;
+}
+
+console.log("First");
+
+const dataRes = getPosts();
+console.log(dataRes);
+
+console.log("Third");
