@@ -193,7 +193,7 @@ function getTotalReviewCount(book) {
 console.log(getTotalReviewCount(book));
 
 */
-
+/*
 ///////////////////////////////////////
 //The Array map Method
 
@@ -270,3 +270,18 @@ const arrAfterUpdate = arrAfterDelete.map((b) =>
 );
 
 console.log(arrAfterUpdate);
+*/
+
+///////////////////////////////////////
+//Asynchronous Javascript: Promises
+
+console.log("First");
+
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    console.log("Second");
+  });
+
+console.log("Third");
