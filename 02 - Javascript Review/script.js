@@ -146,7 +146,7 @@ function getBook(id) {
 ///////////////////////////////////////
 //Destructuring Objects and Arrays
 /* */
-const book = getBook(2);
+const book = getBook(3);
 const {
   author,
   title,
@@ -184,3 +184,11 @@ console.log(undefined ?? false);
 console.log(false ?? "b");
 console.log("" ?? "a");
 console.log(0 ?? "a");
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return librarything + goodreads;
+}
+
+console.log(getTotalReviewCount(book));
