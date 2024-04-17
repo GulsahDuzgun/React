@@ -91,13 +91,21 @@ function Main() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <ul className="pizzas">
-        {pizzas.length > 0 ? (
-          pizzaData.map((pizza) => <Pizza pizzaData={pizza} key={pizza.name} />)
-        ) : (
-          <li>We're still working on our menu. Please come back later :)</li>
-        )}
-      </ul>
+      {pizzas.length > 0 ? (
+        <React.Fragment>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone over, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaData={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </React.Fragment>
+      ) : (
+        <p>We're still working on our menu. Please come back later :)</p>
+      )}
     </main>
   );
 }
