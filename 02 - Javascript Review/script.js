@@ -246,3 +246,27 @@ const sortedByPages = books
   .slice()
   .sort((current, next) => current.pages - next.pages);
 console.log(sortedByPages);
+
+///////////////////////////////////////
+//Working With Immutable Arrays
+
+newBookObJ = {
+  id: 20,
+  title: "Oblomov",
+  pages: 2000,
+};
+
+const arrAfterAdd = [...books, newBookObJ];
+arrAfterAdd;
+console.log(books.length);
+console.log(arrAfterAdd.length);
+
+const arrAfterDelete = arrAfterAdd.filter((b) => b.id !== 1);
+console.log(books.length);
+console.log(arrAfterDelete.length);
+
+const arrAfterUpdate = arrAfterDelete.map((b) =>
+  b.id === 20 ? { ...b, pages: 1 } : b
+);
+
+console.log(arrAfterUpdate);
