@@ -225,3 +225,9 @@ const adventureBooks = books
   .filter((b) => b.genres.includes("adventure"))
   .map((b) => b.title);
 console.log(adventureBooks);
+
+///////////////////////////////////////
+//The Array reduce Method
+
+const pagesAllBooks = books.reduce((acc, b) => b.pages + acc, 0);
+pagesAllBooks; //3227
