@@ -80,13 +80,29 @@ function Main() {
 }
 
 function Footer() {
-  return React.createElement(
-    "footer",
-    null,
-    `We are currently open ${new Date().toLocaleTimeString()}`
-  );
-}
+  const openHour = 8;
+  const closeHour = 22;
+  const currHour = new Date().getHours();
 
+  function logConsole() {
+    console.log("logged");
+  }
+  logConsole();
+
+  const isOpen = currHour <= closeHour && currHour >= openHour ? true : false;
+  console.log(this); //undefined
+
+  return (
+    <footer onClick={logConsole}>
+      We are currently {isOpen ? "open" : "close"}
+    </footer>
+  );
+
+  // return React.createElement(
+  //   "footer",
+  //   null,
+  //   `We are currently open ${new Date().toLocaleTimeString()}`
+}
 const root = ReactDom.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
