@@ -142,10 +142,9 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
-
+/*
 ///////////////////////////////////////
 //Destructuring Objects and Arrays
-/* */
 const book = getBook(3);
 const {
   author,
@@ -192,3 +191,24 @@ function getTotalReviewCount(book) {
 }
 
 console.log(getTotalReviewCount(book));
+
+*/
+
+///////////////////////////////////////
+//The Array map Method
+
+const books = getBooks();
+const essentialData = books.map((book) => {
+  return {
+    title: book.title,
+    author: book.author,
+  };
+});
+
+const essentialData2 = books.map((book) => ({
+  pages: book.pages,
+  hasMovieAdaptation: book.hasMovieAdaptation,
+}));
+
+console.log(essentialData);
+console.log(essentialData2);
