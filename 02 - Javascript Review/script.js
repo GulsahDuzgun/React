@@ -231,3 +231,18 @@ console.log(adventureBooks);
 
 const pagesAllBooks = books.reduce((acc, b) => b.pages + acc, 0);
 pagesAllBooks; //3227
+
+///////////////////////////////////////
+//The sort Array Method !!Mutate array ,take copy with slice()
+
+const arr = [1, 5, 3, 8, 2, 9, 6, 78, 8, 7];
+const sortedArr = arr.slice().sort((a, b) => a - b); //ascending ||current-next return>0
+const sortedArr2 = arr.slice().sort((a, b) => b - a); //descanding
+console.log(sortedArr);
+console.log(sortedArr2);
+console.log(arr);
+
+const sortedByPages = books
+  .slice()
+  .sort((current, next) => current.pages - next.pages);
+console.log(sortedByPages);
