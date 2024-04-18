@@ -22,10 +22,23 @@ function Logo() {
 }
 
 function Form() {
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
-    <div className="add-form">
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need for your trip?</h3>
-    </div>
+      <select name="" id="">
+        {Array.from({ length: 20 }, (item, indx) => (
+          <option key={indx} value={indx + 1}>
+            {indx + 1}
+          </option>
+        ))}
+      </select>
+      <input type="text" placeholder="Item..." />
+      <button>Add</button>
+    </form>
   );
 }
 
