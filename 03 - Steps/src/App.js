@@ -36,22 +36,32 @@ function App() {
             Step:{step + 1} {messages[step]}
           </p>
           <div className="buttons">
-            <button
-              onClick={handlePrevious}
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+            <Button
+              backgroundColor="#7950f2"
+              color="#fff"
+              handleEvent={handlePrevious}
             >
-              Previous
-            </button>
-            <button
-              onClick={handleNext}
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+              <span>👈Previous </span>
+            </Button>
+            <Button
+              backgroundColor="#7950f2"
+              color="#fff"
+              handleEvent={handleNext}
             >
-              Next
-            </button>
+              <span>Next 👉</span>
+            </Button>
           </div>
         </div>
       )}
     </>
+  );
+}
+
+function Button({ backgroundColor, color, handleEvent, ...prop }) {
+  return (
+    <button onClick={handleEvent} style={{ backgroundColor, color }}>
+      {prop.children}
+    </button>
   );
 }
 
