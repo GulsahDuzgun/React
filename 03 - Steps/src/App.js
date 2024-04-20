@@ -16,7 +16,6 @@ function App() {
   const handleNext = function () {
     if (step < 2) {
       setStep((s) => s + 1);
-      setStep((s) => s + 1);
     }
   };
 
@@ -32,9 +31,9 @@ function App() {
             <div className={step >= 1 ? "active" : ""}>2</div>
             <div className={step >= 2 ? "active" : ""}>3</div>
           </div>
-          <p className="message">
-            Step:{step + 1} {messages[step]}
-          </p>
+          <Step>
+            <h3>Step:{step + 1}</h3> {messages[step]}
+          </Step>
           <div className="buttons">
             <Button
               backgroundColor="#7950f2"
@@ -55,6 +54,10 @@ function App() {
       )}
     </>
   );
+}
+
+function Step({ children }) {
+  return <div className="message">{children}</div>;
 }
 
 function Button({ backgroundColor, color, handleEvent, ...prop }) {
