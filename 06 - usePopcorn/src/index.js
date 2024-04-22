@@ -8,7 +8,7 @@ function Test() {
   const [tRate, setTRate] = useState(0);
   return (
     <div>
-      <StarRating onSetTRate={setTRate} maxRating={6} color="blue" />
+      <StarRating onSetTRate={setTRate} maxRating={7} color="blue" />
       <p>The movie was rated {tRate}</p>
     </div>
   );
@@ -20,7 +20,7 @@ root.render(
     <StarRating
       maxRating={5}
       color="red"
-      size="48"
+      size={48}
       messages={["Terrible", "Bad", "Okay", "Good", "Amazing"]}
     />
     <Test></Test>
