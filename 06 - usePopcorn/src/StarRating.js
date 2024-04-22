@@ -10,26 +10,30 @@ const starContainerStyle = {
   display: "flex",
 };
 
-const textStyle = {
-  lineHeight: "1",
-  margin: "0",
-  textAlign: "center",
-};
-
-const starStyle = {
-  display: "block",
-  width: "32px",
-  height: "32px",
-  cursor: "pointer",
-};
-
-export default function StarRating({ maxRating = 5 }) {
-  const [rate, setRate] = useState(0);
+export default function StarRating({
+  maxRating = 5,
+  color = "#fcc419",
+  size = "32",
+  messages = [],
+  defaultRating = 0,
+  onSetTRate,
+}) {
+  const [rate, setRate] = useState(defaultRating);
   const [tempRate, setTempRate] = useState(0);
 
   function handleSetRate(indx) {
     setRate(indx + 1);
+    onSetTRate(indx + 1);
   }
+
+  const textStyle = {
+    lineHeight: "1",
+    margin: "0",
+    textAlign: "center",
+    fontSize: `${size}px`,
+    color: color,
+  };
+
   return (
     <div style={containerStyle}>
       <div style={starContainerStyle}>
@@ -40,15 +44,30 @@ export default function StarRating({ maxRating = 5 }) {
             key={i}
             onHoverIn={() => setTempRate(i + 1)}
             onHoverOut={() => setTempRate(0)}
+            color={color}
+            size={size}
           />
         ))}
       </div>
-      <p style={textStyle}>{tempRate || rate || ""}</p>
+      <p style={textStyle}>
+        {" "}
+        {messages.length === maxRating
+          ? messages[tempRate ? tempRate - 1 : rate - 1]
+          : tempRate || rate || ""}
+      </p>
     </div>
   );
 }
 
-function Star({ isFull, onSetRate, onHoverIn, onHoverOut }) {
+function Star({ isFull, onSetRate, onHoverIn, onHoverOut, color, size }) {
+  const starStyle = {
+    display: "block",
+    width: `${size}px`,
+    height: `${size}px`,
+    cursor: "pointer",
+    color: color,
+  };
+
   return isFull ? (
     <span
       role="button"
@@ -60,8 +79,8 @@ function Star({ isFull, onSetRate, onHoverIn, onHoverOut }) {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
-        fill="#000"
-        stroke="#000"
+        fill={color}
+        stroke={color}
       >
         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
       </svg>
@@ -77,7 +96,7 @@ function Star({ isFull, onSetRate, onHoverIn, onHoverOut }) {
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        stroke="#000"
+        stroke={color}
       >
         <path
           strokeLinecap="round"
