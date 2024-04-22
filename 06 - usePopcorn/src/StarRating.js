@@ -25,6 +25,7 @@ const starStyle = {
 
 export default function StarRating({ maxRating = 5 }) {
   const [rate, setRate] = useState(0);
+  const [tempRate, setTempRate] = useState(0);
 
   function handleSetRate(indx) {
     setRate(indx + 1);
@@ -37,17 +38,25 @@ export default function StarRating({ maxRating = 5 }) {
             isFull={rate >= i + 1}
             onSetRate={() => handleSetRate(i)}
             key={i}
+            onHoverIn={() => setTempRate(i + 1)}
+            onHoverOut={() => setTempRate(0)}
           />
         ))}
       </div>
-      <p style={textStyle}>{rate || ""}</p>
+      <p style={textStyle}>{tempRate || rate || ""}</p>
     </div>
   );
 }
 
-function Star({ isFull, onSetRate }) {
+function Star({ isFull, onSetRate, onHoverIn, onHoverOut }) {
   return isFull ? (
-    <span role="button" onClick={onSetRate} style={starStyle}>
+    <span
+      role="button"
+      onClick={onSetRate}
+      onMouseEnter={onHoverIn}
+      onMouseOut={onHoverOut}
+      style={starStyle}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -58,7 +67,12 @@ function Star({ isFull, onSetRate }) {
       </svg>
     </span>
   ) : (
-    <span onClick={onSetRate} style={starStyle}>
+    <span
+      onClick={onSetRate}
+      style={starStyle}
+      onMouseEnter={onHoverIn}
+      onMouseLeave={onHoverOut}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
