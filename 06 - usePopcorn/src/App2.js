@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+const API_KEY = "6a2a72a6";
 
 const tempMovieData = [
   {
@@ -76,7 +77,7 @@ function Search() {
 function NumResults({ movies }) {
   return (
     <p className="num-results">
-      Found <strong>{movies.length}</strong> results
+      Found <strong>{movies?.length}</strong> results
     </p>
   );
 }
@@ -205,10 +206,13 @@ export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
 
-  fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=6a2a72a6&s=inter`)
-    .then((res) => res.json())
-    .then((data) => setMovies([...data.Search]));
-  console.log("render");
+  useEffect(function () {
+    fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=inter`)
+      .then((res) => res.json())
+      .then((data) => setMovies(data.Search));
+  }, []); //this code is executed just in mounted cycle
+
+  console.log("render", movies);
   return (
     <>
       <Navbar>
