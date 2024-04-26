@@ -198,6 +198,10 @@ function WatchedMovie({ movie }) {
   );
 }
 
+function Loader() {
+  return <p className="loader">LOADING...</p>;
+}
+
 function Main({ children }) {
   return <main className="main">{children}</main>;
 }
@@ -205,17 +209,18 @@ function Main({ children }) {
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
+  const [isLoad, setIsLoad] = useState(false);
 
   useEffect(function () {
     async function fetchMovies() {
+      setIsLoad(true);
       const res = await fetch(
         `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=inter`
       );
       const data = await res.json();
-      setMovies(data.Search);
 
-      //this code is executed just in mounted cycle
-      console.log("render", movies);
+      setMovies(data.Search);
+      setIsLoad(false);
     }
     fetchMovies();
   }, []);
@@ -235,9 +240,7 @@ export default function App() {
           }
         /> */}
 
-        <Box>
-          <MovieList movies={movies} />
-        </Box>
+        <Box>{isLoad ? <Loader /> : <MovieList movies={movies} />}</Box>
         <Box>
           <MovieSummary watched={watched} />
           <WatchedList watched={watched} />
