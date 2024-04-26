@@ -39,5 +39,9 @@
 > - _Multiple state updates inside an event handler function are batched, so they happen all at once causing only one re-render. This means er can not access a state variable immediately after updating it. State updates are asynchronous. Since React 18, batching also happens in timeouts, promises and native event handlers. ,_
 > - _When using events in event handlers, we get access to a synthetic event object, not the browser's native object, so that events work the same way across all the browsers. The difference is that most synthetic events bubble, including focus, blur and change , which do not bubble as native browser events. Only the scroll event does not bubble ,_
 > - _React is a library, not a framework. This means that you can assemble your application using your favorite third-party libraries. The downside is that you need to find and learn all these additional libraries. ,_
+> - _**What is the side effect,?** A side effect is basically any "interaction between a React component and the world outside the component". We can also think of a side as "code that actually does something" such as data fetching, setting up subscriptions, setting up timers, manually accessing the DOM etc. There are two way of side effect. Event handlers and Effects ,_
+> - _Event handlers are triggered by events. Like onClick, onSubmit etc. Effects are triggered by rendering and allow us to write code that will run at different moments: mount, re-render or unmount. ,_
+> - _Event Handlers are executed when the corresponding event happens and used to react to an event,_
+> - _Effects(useEffect) are executed after the component mounts(initial render) and after subsequent re-renders(according to dependency array) and used to keep a component synchronized with some external system like API ,_
 >
 > #
