@@ -207,12 +207,18 @@ export default function App() {
   const [watched, setWatched] = useState(tempWatchedData);
 
   useEffect(function () {
-    fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=inter`)
-      .then((res) => res.json())
-      .then((data) => setMovies(data.Search));
-  }, []); //this code is executed just in mounted cycle
+    async function fetchMovies() {
+      const res = await fetch(
+        `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=inter`
+      );
+      const data = await res.json();
+      setMovies(data.Search);
 
-  console.log("render", movies);
+      //this code is executed just in mounted cycle
+      console.log("render", movies);
+    }
+    fetchMovies();
+  }, []);
   return (
     <>
       <Navbar>
