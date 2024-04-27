@@ -206,21 +206,39 @@ function Main({ children }) {
   return <main className="main">{children}</main>;
 }
 
+function ShowErrorMess({ message }) {
+  return <p className="error">⛔{message}</p>;
+}
+
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
   const [isLoad, setIsLoad] = useState(false);
+  const [errObj, setErrObj] = useState("");
 
   useEffect(function () {
     async function fetchMovies() {
-      setIsLoad(true);
-      const res = await fetch(
-        `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=inter`
-      );
-      const data = await res.json();
+      try {
+        setIsLoad(true);
 
-      setMovies(data.Search);
-      setIsLoad(false);
+        const res = await fetch(
+          `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=intdsdsder`
+        );
+        if (!res.ok)
+          throw new Error(
+            "Something went wrong. Please check your internet connection."
+          );
+
+        const data = await res.json();
+        if (data.Response === "False") throw new Error("Movie not Found");
+
+        setMovies(data.Search);
+      } catch (err) {
+        console.log(err);
+        setErrObj(err.message);
+      } finally {
+        setIsLoad(false);
+      }
     }
     fetchMovies();
   }, []);
@@ -240,7 +258,12 @@ export default function App() {
           }
         /> */}
 
-        <Box>{isLoad ? <Loader /> : <MovieList movies={movies} />}</Box>
+        <Box>
+          {errObj && <ShowErrorMess message={errObj} />}
+          {isLoad && <Loader />}
+          {!errObj & !isLoad && <MovieList movies={movies} />}
+          {/* {isLoad ? <Loader /> : <MovieList movies={movies} />} */}
+        </Box>
         <Box>
           <MovieSummary watched={watched} />
           <WatchedList watched={watched} />
