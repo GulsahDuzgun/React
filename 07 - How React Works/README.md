@@ -43,5 +43,10 @@
 > - _Event handlers are triggered by events. Like onClick, onSubmit etc. Effects are triggered by rendering and allow us to write code that will run at different moments: mount, re-render or unmount. ,_
 > - _Event Handlers are executed when the corresponding event happens and used to react to an event,_
 > - _Effects(useEffect) are executed after the component mounts(initial render) and after subsequent re-renders(according to dependency array) and used to keep a component synchronized with some external system like API ,_
+> - _**What is the useEffect dependency array?** By default in effect will run after each and every render.We can prevent that by passing a dependency array into the useEffect hook as a second argument. Without this array react doesn't know when to actually run the effect. If we do specify the effect dependencies by passing in dependency array the effect will be executed each time that one of the dependencies changes. Effect dependencies are state and props that are used inside the effect. Every state variable and prop used inside the effect must be included in the dependency array. ,_
+> - _useEffects is like an event listener that is listening for one dependency to change. Whenever a dependency changes, it will execute the effect again.,_
+> - _Effects react to updates to state and props used inside the effect. The useEffect is a truly synchronization mechanism. A mechanism to synchronize effects with the state of the application. ,_
+> - _We can use the dependency array in order to run effects when the component renders or re-renders,_
+> - _Effects are only executed after the browser has painted the component instance on the screen, not immediately after the render. That is why we say that effects run asynchronously after the render has already been painted to the screen. Because effects may contain long-running processes such as fetchin data. ,_
 >
 > #
