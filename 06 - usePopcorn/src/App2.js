@@ -60,9 +60,7 @@ function Logo() {
   );
 }
 
-function Search() {
-  const [query, setQuery] = useState("");
-
+function Search({ query, setQuery }) {
   return (
     <input
       className="search"
@@ -86,7 +84,6 @@ function Navbar({ children }) {
   return (
     <nav className="nav-bar">
       <Logo />
-      <Search />
       {children}
     </nav>
   );
@@ -215,36 +212,50 @@ export default function App() {
   const [watched, setWatched] = useState(tempWatchedData);
   const [isLoad, setIsLoad] = useState(false);
   const [errObj, setErrObj] = useState("");
+  const [query, setQuery] = useState("");
 
-  useEffect(function () {
-    async function fetchMovies() {
-      try {
-        setIsLoad(true);
+  useEffect(
+    function () {
+      async function fetchMovies() {
+        try {
+          setIsLoad(true);
+          setErrObj("");
 
-        const res = await fetch(
-          `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=intdsdsder`
-        );
-        if (!res.ok)
-          throw new Error(
-            "Something went wrong. Please check your internet connection."
+          const res = await fetch(
+            `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`
           );
+          if (!res.ok)
+            throw new Error(
+              "Something went wrong. Please check your internet connection."
+            );
 
-        const data = await res.json();
-        if (data.Response === "False") throw new Error("Movie not Found");
+          const data = await res.json();
+          if (data.Response === "False") throw new Error("Movie not Found");
 
-        setMovies(data.Search);
-      } catch (err) {
-        console.log(err);
-        setErrObj(err.message);
-      } finally {
-        setIsLoad(false);
+          setMovies(data.Search);
+        } catch (err) {
+          console.log(err);
+          setErrObj(err.message);
+        } finally {
+          setIsLoad(false);
+        }
       }
-    }
-    fetchMovies();
-  }, []);
+
+      if (query.trim().length < 3) {
+        setErrObj("");
+        setMovies([]);
+        return;
+      }
+
+      fetchMovies();
+    },
+    [query]
+  );
+
   return (
     <>
       <Navbar>
+        <Search query={query} setQuery={setQuery} />
         <NumResults movies={movies} />
       </Navbar>
       <Main>
