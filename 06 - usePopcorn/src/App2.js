@@ -387,6 +387,14 @@ function SelectedMovie({
     [selectedMovieID]
   );
 
+  useEffect(
+    function () {
+      if (!title) return;
+      document.title = `MOVIE:${title}`;
+    },
+    [title]
+  );
+
   function handleAdd() {
     const newWathedMovie = {
       imdbID: selectedMovieID,
