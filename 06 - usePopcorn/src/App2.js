@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import StarRating from "./StarRating";
 const API_KEY = "6a2a72a6";
 
 const tempMovieData = [
@@ -312,12 +313,76 @@ export default function App() {
 }
 
 function SelectedMovie({ selectedMovieID, onCloseMovie }) {
+  const [movie, setMovie] = useState({});
+  const [isLoad, setIsLoad] = useState(false);
+
+  const {
+    Title: title,
+    Year: year,
+    Rated: rated,
+    Released: released,
+    Runtime: runTime,
+    Actors: actors,
+    Plot: plot,
+    Poster: poster,
+    Genre: genre,
+    Director: director,
+    imdbRating,
+  } = movie;
+
+  useEffect(
+    function () {
+      async function fetchMovieDetail() {
+        setIsLoad(true);
+        const res = await fetch(
+          `http://www.omdbapi.com/?apikey=${API_KEY}&i=${selectedMovieID}`
+        );
+
+        const data = await res.json();
+        setMovie(data);
+        setIsLoad(false);
+      }
+
+      fetchMovieDetail();
+    },
+    [selectedMovieID]
+  );
+
   return (
     <div className="details">
-      <button className="btn-back" onClick={onCloseMovie}>
-        &larr;
-      </button>
-      {selectedMovieID}
+      {isLoad ? (
+        <Loader />
+      ) : (
+        <>
+          <header>
+            <button className="btn-back" onClick={onCloseMovie}>
+              &larr;
+            </button>
+            <img src={poster} alt={`Poster of ${title}`} />
+            <div className="details-overview">
+              <h2>{title}</h2>
+              <p>
+                {released} &bull; {runTime}
+              </p>
+              <p>{genre}</p>
+              <p>
+                <span>⭐</span>
+                {imdbRating} IMDb rating
+              </p>
+            </div>
+          </header>
+          <section>
+            <div className="rating">
+              <StarRating maxRating={10} size={24} />
+            </div>
+            <p>
+              <em>{plot}</em>
+            </p>
+            <p>Starring {actors}</p>
+            <p>Directed by {director}</p>
+          </section>
+        </>
+      )}
     </div>
   );
 }
