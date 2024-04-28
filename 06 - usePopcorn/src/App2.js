@@ -372,7 +372,6 @@ function SelectedMovie({
         const data = await res.json();
         setMovie(data);
         setIsLoad(false);
-        console.log(watchedList);
 
         const watchedMovie = watchedList.find(
           (mov) => mov.imdbID === selectedMovieID
@@ -391,6 +390,11 @@ function SelectedMovie({
     function () {
       if (!title) return;
       document.title = `MOVIE:${title}`;
+
+      return function () {
+        console.log("CLEAN-UP");
+        document.title = `usePopcorn`;
+      };
     },
     [title]
   );
