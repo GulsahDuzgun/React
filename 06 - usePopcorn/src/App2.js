@@ -404,6 +404,19 @@ function SelectedMovie({
     [title]
   );
 
+  useEffect(function () {
+    function callback(e) {
+      if (e.code === "Escape") {
+        console.log("Escape");
+        onCloseMovie();
+      }
+    }
+
+    document.addEventListener("keydown", callback);
+
+    return () => document.removeEventListener("keydown", callback);
+  }, []);
+
   function handleAdd() {
     const newWathedMovie = {
       imdbID: selectedMovieID,
