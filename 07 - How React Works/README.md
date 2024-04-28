@@ -48,5 +48,9 @@
 > - _Effects react to updates to state and props used inside the effect. The useEffect is a truly synchronization mechanism. A mechanism to synchronize effects with the state of the application. ,_
 > - _We can use the dependency array in order to run effects when the component renders or re-renders,_
 > - _Effects are only executed after the browser has painted the component instance on the screen, not immediately after the render. That is why we say that effects run asynchronously after the render has already been painted to the screen. Because effects may contain long-running processes such as fetchin data. ,_
+> - _**What is The CleanUp Function?** We can return The CleanUp function from an effect it is optional. It runs on two occasions:
+>   1- Before the effect is executed again(re-render according to dependency array)
+>   2-After a component has unmounted. ,_
+> - _Necessary whenever the side effect keeps happenning after the component has been re-rendered or unmounted and also each effect should do only one thing! Use one useEffect hook for each side effect. This makes effects easier to clean up. ,_
 >
 > #
