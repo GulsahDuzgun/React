@@ -152,11 +152,11 @@ function MovieSummary({ watched }) {
         </p>
         <p>
           <span>⭐️</span>
-          <span>{avgImdbRating}</span>
+          <span>{avgImdbRating.toFixed(2)}</span>
         </p>
         <p>
           <span>🌟</span>
-          <span>{avgUserRating}</span>
+          <span>{avgUserRating.toFixed(2)}</span>
         </p>
         <p>
           <span>⏳</span>
@@ -301,6 +301,7 @@ export default function App() {
         <Box>
           {selectedMovieID ? (
             <SelectedMovie
+              watchedList={watched}
               selectedMovieID={selectedMovieID}
               onCloseMovie={handleCloseMovieBtn}
               onSetWatchedList={handleSetWatched}
@@ -317,10 +318,16 @@ export default function App() {
   );
 }
 
-function SelectedMovie({ selectedMovieID, onCloseMovie, onSetWatchedList }) {
+function SelectedMovie({
+  selectedMovieID,
+  onCloseMovie,
+  watchedList,
+  onSetWatchedList,
+}) {
   const [movie, setMovie] = useState({});
   const [isLoad, setIsLoad] = useState(false);
   const [userRating, setUserRating] = useState(0);
+  const [isRated, setIsRated] = useState(0);
 
   const {
     Title: title,
@@ -339,6 +346,8 @@ function SelectedMovie({ selectedMovieID, onCloseMovie, onSetWatchedList }) {
     function () {
       async function fetchMovieDetail() {
         setIsLoad(true);
+        setIsRated(0);
+
         const res = await fetch(
           `http://www.omdbapi.com/?apikey=${API_KEY}&i=${selectedMovieID}`
         );
@@ -346,6 +355,14 @@ function SelectedMovie({ selectedMovieID, onCloseMovie, onSetWatchedList }) {
         const data = await res.json();
         setMovie(data);
         setIsLoad(false);
+        console.log(watchedList);
+
+        const watchedMovie = watchedList.find(
+          (mov) => mov.imdbID === selectedMovieID
+        );
+        if (watchedMovie) {
+          setIsRated(watchedMovie.userRating);
+        }
       }
 
       fetchMovieDetail();
@@ -392,13 +409,23 @@ function SelectedMovie({ selectedMovieID, onCloseMovie, onSetWatchedList }) {
           </header>
           <section>
             <div className="rating">
-              <StarRating maxRating={10} size={24} onSetRate={setUserRating} />
-              {userRating ? (
-                <button className="btn-add" onClick={handleAdd}>
-                  + Add to List
-                </button>
+              {!isRated ? (
+                <>
+                  <StarRating
+                    maxRating={10}
+                    size={24}
+                    onSetRate={setUserRating}
+                  />
+                  {userRating ? (
+                    <button className="btn-add" onClick={handleAdd}>
+                      + Add to List
+                    </button>
+                  ) : (
+                    ""
+                  )}
+                </>
               ) : (
-                ""
+                <p>You rated with movie {isRated}</p>
               )}
             </div>
             <p>
