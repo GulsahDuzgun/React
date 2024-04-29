@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App2";
+import App from "./App3";
 // import StarRating from "./StarRating";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
