@@ -52,5 +52,9 @@
 >   1- Before the effect is executed again(re-render according to dependency array)
 >   2-After a component has unmounted. ,_
 > - _Necessary whenever the side effect keeps happenning after the component has been re-rendered or unmounted and also each effect should do only one thing! Use one useEffect hook for each side effect. This makes effects easier to clean up. ,_
+> - _The rules of Hooks:
+>   1 - Only call hooks at the top level of code: Do not call hooks inside conditionals, loops, nested functions or after an early return. This is necessary to ensure that hooks are always called in the same order.
+>   2 - Only call hooks inside a function component or a custom hook
+>   ,_
 >
 > #
