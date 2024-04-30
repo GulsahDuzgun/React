@@ -177,11 +177,14 @@ function ShowErrorMess({ message }) {
 
 export default function App() {
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
   const [isLoad, setIsLoad] = useState(false);
   const [errObj, setErrObj] = useState("");
   const [query, setQuery] = useState("");
   const [selectedMovieID, setSelectedMovieID] = useState(null);
+  const [watched, setWatched] = useState(function () {
+    const data = JSON.parse(localStorage.getItem("watchedList"));
+    return data;
+  });
 
   function handleSetSelectedMovieID(id) {
     setSelectedMovieID((oldID) => (oldID === id ? null : id));
@@ -241,6 +244,13 @@ export default function App() {
       };
     },
     [query]
+  );
+
+  useEffect(
+    function () {
+      localStorage.setItem("watchedList", JSON.stringify(watched));
+    },
+    [watched]
   );
 
   return (
@@ -386,7 +396,7 @@ function SelectedMovie({
 
   // if (imdbRating > 7) return <p>Hello World</p>;
   /* eslint-disable */
-  if (imdbRating > 7) [isGoodQuality, setIsQuality] = useState("");
+  // if (imdbRating > 7) [isGoodQuality, setIsQuality] = useState("");
 
   return (
     <div className="details">
