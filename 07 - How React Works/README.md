@@ -54,7 +54,8 @@
 > - _Necessary whenever the side effect keeps happenning after the component has been re-rendered or unmounted and also each effect should do only one thing! Use one useEffect hook for each side effect. This makes effects easier to clean up. ,_
 > - _The rules of Hooks:
 >   1 - Only call hooks at the top level of code: Do not call hooks inside conditionals, loops, nested functions or after an early return. This is necessary to ensure that hooks are always called in the same order.
->   2 - Only call hooks inside a function component or a custom hook
->   ,_
+>   2 - Only call hooks inside a function component or a custom hook ,_
+> - _Whenever initial state depends on some computation for example, reading data from local storage we can pass in a callback function like this instad of just a single value. This functions must be pure and accept no arguments. This process is sometimes called lazy evaluation. This callback function is only called on the initial render of the component on subsequent re-render it will simply be ignored. ,_
+> - _If we want to update state based on the current state, we can give the setter function a callback function that function is pure and returns the next state based on the current state. While updating state never mutate arrays or objects instead you must create new object or new array which incorporates the changes that you want to make. ,_
 >
 > #
