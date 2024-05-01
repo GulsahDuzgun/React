@@ -337,6 +337,8 @@ function SelectedMovie({
   const [userRating, setUserRating] = useState(0);
   const [isRated, setIsRated] = useState(0);
 
+  const counterRef = useRef(0);
+
   const {
     Title: title,
     Year: year,
@@ -349,6 +351,13 @@ function SelectedMovie({
     Director: director,
     imdbRating,
   } = movie;
+
+  useEffect(
+    function () {
+      if (userRating) counterRef.current += 1;
+    },
+    [userRating]
+  );
 
   useEffect(
     function () {
@@ -410,6 +419,7 @@ function SelectedMovie({
       poster,
       imdbRating: Number(imdbRating),
       runTime: Number(runTime.split(" ").at(0)),
+      counterUserRating: counterRef.current,
       userRating,
     };
     onSetWatchedList(newWathedMovie);
