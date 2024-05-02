@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useMovies } from "./useMovies";
 import StarRating from "./StarRating";
 const API_KEY = "6a2a72a6";
 
@@ -198,15 +199,14 @@ function ShowErrorMess({ message }) {
 }
 
 export default function App() {
-  const [movies, setMovies] = useState([]);
-  const [isLoad, setIsLoad] = useState(false);
-  const [errObj, setErrObj] = useState("");
   const [query, setQuery] = useState("");
   const [selectedMovieID, setSelectedMovieID] = useState(null);
   const [watched, setWatched] = useState(function () {
     const data = JSON.parse(localStorage.getItem("watchedList"));
     return data;
   });
+
+  const { movies, isLoad, errObj } = useMovies(query);
 
   function handleSetSelectedMovieID(id) {
     setSelectedMovieID((oldID) => (oldID === id ? null : id));
@@ -223,50 +223,6 @@ export default function App() {
   function handleDeleteWatchedMovie(id) {
     setWatched((watchedList) => watchedList.filter((mov) => mov.imdbID !== id));
   }
-
-  useEffect(
-    function () {
-      const controller = new AbortController();
-      async function fetchMovies() {
-        try {
-          setIsLoad(true);
-          setErrObj("");
-
-          const res = await fetch(
-            `http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`,
-            { signal: controller.signal }
-          );
-          if (!res.ok)
-            throw new Error(
-              "Something went wrong. Please check your internet connection."
-            );
-
-          const data = await res.json();
-          if (data.Response === "False") throw new Error("Movie not Found");
-
-          setMovies(data.Search);
-          setErrObj("");
-        } catch (err) {
-          if (err.name !== "AbortError") setErrObj(err.message);
-        } finally {
-          setIsLoad(false);
-        }
-      }
-
-      if (query.trim().length < 3) {
-        setErrObj("");
-        setMovies([]);
-        return;
-      }
-
-      fetchMovies();
-
-      return function () {
-        controller.abort();
-      };
-    },
-    [query]
-  );
 
   useEffect(
     function () {
