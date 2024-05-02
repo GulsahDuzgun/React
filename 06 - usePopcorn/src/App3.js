@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useMovies } from "./useMovies";
 import { useLocalStorageState } from "./useLocalStorageState";
 import StarRating from "./StarRating";
+import { useKeyPress } from "./useKeyPress";
 const API_KEY = "6a2a72a6";
 
 const average = (arr) =>
@@ -20,23 +21,11 @@ function Search({ query, setQuery }) {
   const inputElement = useRef(null);
   // const inputElement2 = document.querySelector(".search");
 
-  useEffect(
-    function () {
-      function callback(e) {
-        if (document.activeElement === inputElement.current) return;
-
-        if (e.code === "Enter") {
-          inputElement.current.focus();
-          setQuery("");
-        }
-      }
-
-      document.addEventListener("keypress", callback);
-
-      return () => document.removeEventListener("keypress", callback);
-    },
-    [setQuery]
-  );
+  useKeyPress("Enter", function () {
+    if (document.activeElement === inputElement.current) return;
+    inputElement.current.focus();
+    setQuery("");
+  });
 
   return (
     <input
@@ -299,6 +288,8 @@ function SelectedMovie({
     imdbRating,
   } = movie;
 
+  useKeyPress("Escape", onCloseMovie);
+
   useEffect(
     function () {
       if (userRating) counterRef.current += 1;
@@ -344,19 +335,6 @@ function SelectedMovie({
     },
     [title]
   );
-
-  useEffect(function () {
-    function callback(e) {
-      if (e.code === "Escape") {
-        console.log("Escape");
-        onCloseMovie();
-      }
-    }
-
-    document.addEventListener("keydown", callback);
-
-    return () => document.removeEventListener("keydown", callback);
-  }, []);
 
   function handleAdd() {
     const newWathedMovie = {
