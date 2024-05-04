@@ -3,6 +3,7 @@ import Header from "./Header";
 import Loader from "./Loader";
 import Error from "./Error";
 import StarterScreen from "./StarterScreen";
+import Question from "./Question";
 import Main from "./Main";
 
 const initialState = {
@@ -16,6 +17,8 @@ function reducer(state, action) {
       return { ...state, status: "ready", questions: action.payload };
     case "dataFailed":
       return { ...state, status: "error" };
+    case "startQuiz":
+      return { ...state, status: "active" };
     default:
       throw new Error("Action Unknown");
   }
@@ -38,7 +41,10 @@ function App() {
       <Main numQuestions={numQuestions}>
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
-        {status === "ready" && <StarterScreen numQuestions={numQuestions} />}
+        {status === "ready" && (
+          <StarterScreen numQuestions={numQuestions} dispatch={dispatch} />
+        )}
+        {status === "active" && <Question />}
       </Main>
     </div>
   );
