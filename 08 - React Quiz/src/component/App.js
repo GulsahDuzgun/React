@@ -5,6 +5,7 @@ import Error from "./Error";
 import StarterScreen from "./StarterScreen";
 import Main from "./Main";
 import QuestionList from "./QuestionList";
+import NextButton from "./NextButton";
 
 const initialState = {
   questions: [],
@@ -33,6 +34,8 @@ function reducer(state, action) {
             ? state.points + question.points
             : state.points,
       };
+    case "nextQuestion":
+      return { ...state, answer: null, currentIndex: state.currentIndex + 1 };
     default:
       throw new Error("Action Unknown");
   }
@@ -61,12 +64,14 @@ function App() {
           <StarterScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
         {status === "active" && (
-          <QuestionList
-            question={questions[index]}
-            answer={answer}
-            points={points}
-            dispatch={dispatch}
-          />
+          <>
+            <QuestionList
+              question={questions[index]}
+              answer={answer}
+              dispatch={dispatch}
+            />
+            <NextButton dispatch={dispatch} answer={answer} />
+          </>
         )}
       </Main>
     </div>

@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function Question({ question, dispatch, answer, points }) {
-  console.log(question);
+export default function Question({ question, dispatch, answer }) {
   return (
     <div className="options">
       {question.options.map((option, indx) => (
         <button
+          disabled={!!answer}
           className={`btn btn-option ${
             answer !== null
               ? indx === question.correctOption
