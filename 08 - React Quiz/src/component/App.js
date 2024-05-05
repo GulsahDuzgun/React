@@ -8,6 +8,8 @@ import QuestionList from "./QuestionList";
 import NextButton from "./NextButton";
 import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
+import Timer from "./Timer";
+import Footer from "./Footer";
 
 const initialState = {
   questions: [],
@@ -44,6 +46,14 @@ function reducer(state, action) {
         status: "finished",
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
+      };
+    case "restart":
+      return {
+        ...state,
+        status: "ready",
+        points: 0,
+        currentIndex: 0,
+        answer: null,
       };
     default:
       throw new Error("Action Unknown");
@@ -88,12 +98,15 @@ function App() {
               answer={answer}
               dispatch={dispatch}
             />
-            <NextButton
-              dispatch={dispatch}
-              answer={answer}
-              index={index}
-              numQuestions={numQuestions}
-            />
+            <Footer>
+              <Timer />
+              <NextButton
+                dispatch={dispatch}
+                answer={answer}
+                index={index}
+                numQuestions={numQuestions}
+              />
+            </Footer>
           </>
         )}
         {status === "finished" && (
@@ -101,6 +114,7 @@ function App() {
             totalMaxPoint={totalMaxPoint}
             highscore={highscore}
             points={points}
+            dispatch={dispatch}
           />
         )}
       </Main>
