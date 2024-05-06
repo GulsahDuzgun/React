@@ -11,6 +11,8 @@ import FinishScreen from "./FinishScreen";
 import Timer from "./Timer";
 import Footer from "./Footer";
 
+const SECS_PER_QUESTION = 30;
+
 const initialState = {
   questions: [],
   status: "loading", //'loading', 'error', 'ready','finished'
@@ -18,6 +20,7 @@ const initialState = {
   answer: null,
   points: 0,
   highscore: 0,
+  remainTime: null,
 };
 
 function reducer(state, action) {
@@ -27,7 +30,11 @@ function reducer(state, action) {
     case "dataFailed":
       return { ...state, status: "error" };
     case "startQuiz":
-      return { ...state, status: "active" };
+      return {
+        ...state,
+        status: "active",
+        remainTime: state.questions.length * SECS_PER_QUESTION,
+      };
     case "questionAnswered":
       const question = state.questions[state.currentIndex];
       return {
@@ -54,6 +61,13 @@ function reducer(state, action) {
         points: 0,
         currentIndex: 0,
         answer: null,
+        remainTime: 10,
+      };
+    case "startTimer":
+      return {
+        ...state,
+        remainTime: state.remainTime - 1,
+        status: state.remainTime === 0 ? "finished" : state.status,
       };
     default:
       throw new Error("Action Unknown");
@@ -62,7 +76,15 @@ function reducer(state, action) {
 
 function App() {
   const [
-    { status, questions, currentIndex: index, points, answer, highscore },
+    {
+      status,
+      questions,
+      currentIndex: index,
+      points,
+      answer,
+      highscore,
+      remainTime,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
   const numQuestions = questions.length;
@@ -99,7 +121,7 @@ function App() {
               dispatch={dispatch}
             />
             <Footer>
-              <Timer />
+              <Timer remainTime={remainTime} dispatch={dispatch} />
               <NextButton
                 dispatch={dispatch}
                 answer={answer}
