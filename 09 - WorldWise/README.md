@@ -1,8 +1,9 @@
-# React + Vite
+### What did I learn while coding this project?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> #
+>
+> - _**What is Routing?** Routing matchs different URLs to different views in the user interface. We match each URL to a specific React component and we call each of these matches between a URL and a component as route. Then one of those specific URLs gets visited the corresponding react component will be rendered.This enables users to navigate between different applications screens, using the browser URL. Routing like this keeps the user interface nicely in sync with the current browser URL. This type of routing only works this way on the client side. ,_
+> - _**What is Single-Page Applications(SPA)?** Single-Page applications or SPAs for short are web applications that are executed entirely on the client only in the user's web browser. ,_
+> - _Whenever a user clicks on a special link provided by the Router, the URL in the browser simply changes. In React this job is done by React Router. Changing the URL will then trigger the DOM to be updated as a result. The page simply updated by Javascript which means there will never be a complete page reload,_
+>
+> #
