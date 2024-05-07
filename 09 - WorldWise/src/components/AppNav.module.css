@@ -1,0 +1,9 @@
+.nav {
+  display: flex;
+  background-color: rebeccapurple;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+}
