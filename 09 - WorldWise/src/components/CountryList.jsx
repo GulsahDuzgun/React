@@ -17,7 +17,6 @@ function CountryList({ isLoading, cities }) {
       return [...acc, { code: curElement.emoji, country: curElement.country }];
     }
   }, []);
-  console.log(countries);
 
   return (
     <ul className={styles.countryList}>

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./CityItem.module.css";
+import { Link } from "react-router-dom";
 
 function CityItem({ city }) {
   const [flag, setFlag] = useState("");
-  const { cityName, date } = city;
+  const { cityName, date, id } = city;
 
   useEffect(
     function () {
@@ -32,13 +33,15 @@ function CityItem({ city }) {
     }).format(new Date(date));
 
   return (
-    <li className={styles.cityItem}>
-      <span className={styles.emoji}>
-        <img src={flag} alt="" />
-      </span>
-      <h3 className={styles.name}>{cityName}</h3>
-      <time className={styles.date}>{formatDate(date)}</time>
-      <button className={styles.deleteBtn}>&times;</button>
+    <li>
+      <Link to={id} className={styles.cityItem}>
+        <span className={styles.emoji}>
+          <img src={flag} alt="" />
+        </span>
+        <h3 className={styles.name}>{cityName}</h3>
+        <time className={styles.date}>{formatDate(date)}</time>
+        <button className={styles.deleteBtn}>&times;</button>
+      </Link>
     </li>
   );
 }
