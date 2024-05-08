@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./CityItem.module.css";
 
 function CityItem({ city }) {
+  const [flag, setFlag] = useState("");
   const { cityName, date } = city;
 
   useEffect(
@@ -9,11 +10,10 @@ function CityItem({ city }) {
       async function getFlag() {
         try {
           const data = await fetch(
-            `https://flagcdn.com/16x12/${city.emoji.toLowerCase()}.png`
+            `https://flagcdn.com/16x12/${city.emoji}.png`
           );
           const res = data.url;
-          city.emoji = res;
-          console.log(res);
+          setFlag(res);
         } catch (err) {
           console.log(err);
         }
@@ -34,7 +34,7 @@ function CityItem({ city }) {
   return (
     <li className={styles.cityItem}>
       <span className={styles.emoji}>
-        <img src={city.emoji} alt="Flag" />
+        <img src={flag} alt="" />
       </span>
       <h3 className={styles.name}>{cityName}</h3>
       <time className={styles.date}>{formatDate(date)}</time>

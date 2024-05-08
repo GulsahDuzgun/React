@@ -11,12 +11,13 @@ function CountryList({ isLoading, cities }) {
     );
 
   const countries = cities.reduce((acc, curElement) => {
-    console.log(curElement);
-    if (acc.includes(curElement.country)) return [...acc];
+    if (acc.map((el) => el.country).includes(curElement.country))
+      return [...acc];
     else {
       return [...acc, { code: curElement.emoji, country: curElement.country }];
     }
   }, []);
+  console.log(countries);
 
   return (
     <ul className={styles.countryList}>

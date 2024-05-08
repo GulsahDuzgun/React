@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./CountryItem.module.css";
 
 function CountryItem({ country }) {
+  const [flag, setFlag] = useState("");
   useEffect(
     function () {
       async function getFlag() {
@@ -9,8 +10,7 @@ function CountryItem({ country }) {
           const data = await fetch(
             `https://flagcdn.com/16x12/${country.code.toLowerCase()}.png`
           );
-          const res = data.url;
-          country.flag = res;
+          setFlag(data.url);
         } catch (err) {
           console.log(err);
         }
@@ -24,7 +24,7 @@ function CountryItem({ country }) {
   return (
     <li className={styles.countryItem}>
       <span>
-        <img src={country.flag} alt="flag" />
+        <img src={flag} alt="" />
       </span>
       <span>{country.country}</span>
     </li>
