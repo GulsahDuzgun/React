@@ -1,7 +1,28 @@
+import { useEffect } from "react";
 import styles from "./CityItem.module.css";
 
 function CityItem({ city }) {
-  const { emoji, cityName, date } = city;
+  const { cityName, date } = city;
+
+  useEffect(
+    function () {
+      async function getFlag() {
+        try {
+          const data = await fetch(
+            `https://flagcdn.com/16x12/${city.emoji.toLowerCase()}.png`
+          );
+          const res = data.url;
+          city.emoji = res;
+          console.log(res);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+
+      getFlag();
+    },
+    [city]
+  );
 
   const formatDate = (date) =>
     new Intl.DateTimeFormat("en", {
@@ -12,7 +33,9 @@ function CityItem({ city }) {
 
   return (
     <li className={styles.cityItem}>
-      <span className={styles.emoji}>{emoji}</span>
+      <span className={styles.emoji}>
+        <img src={city.emoji} alt="Flag" />
+      </span>
       <h3 className={styles.name}>{cityName}</h3>
       <time className={styles.date}>{formatDate(date)}</time>
       <button className={styles.deleteBtn}>&times;</button>
