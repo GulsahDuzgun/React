@@ -1,13 +1,13 @@
+import { useContext } from "react";
 import { createContext } from "react";
 import { useEffect, useState } from "react";
 
 const BASE_URL = "http://localhost:1227/";
+const CitiesContext = createContext();
 
-function CitiesContextProvider({ children }) {
+function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  const CitiesContext = createContext();
 
   useEffect(function () {
     async function fetchCities() {
@@ -33,4 +33,13 @@ function CitiesContextProvider({ children }) {
   );
 }
 
-export { CitiesContextProvider };
+function useCitiesContext() {
+  const context = useContext(CitiesContext);
+  if (context === undefined)
+    throw new Error(
+      "CitiesContext was used outside of the CitiesProvider in DOM tree."
+    );
+  return context;
+}
+
+export { CitiesProvider, useCitiesContext };
