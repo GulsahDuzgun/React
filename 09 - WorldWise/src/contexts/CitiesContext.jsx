@@ -16,6 +16,23 @@ function CitiesProvider({ children }) {
         setIsLoading(true);
         const res = await fetch(`${BASE_URL}cities`);
         const data = await res.json();
+        data.map(
+          (el, index) =>
+            (data[index].url = `https://flagcdn.com/16x12/${el.emoji}.png`)
+        );
+
+        //🤪
+        // await data
+        //   .map((el, index) => ({
+        //     code: el.emoji,
+        //     index,
+        //   }))
+        //   .map((el) =>
+        //     fetch(`https://flagcdn.com/16x12/${el.code}.png`).then(
+        //       (res) => (data[el.index].url = res.url)
+        //     )
+        //   );
+
         setCity(data);
       } catch {
         alert("There was an error while loading data");
@@ -32,6 +49,8 @@ function CitiesProvider({ children }) {
       setIsLoading(true);
       const data = await fetch(`${BASE_URL}cities/${id}`);
       const res = await data.json();
+
+      res.url = `https://flagcdn.com/16x12/${res.emoji}.png`;
       setCurrentCity(res);
     } catch {
       throw new Error("There is an error while fetching the city data");

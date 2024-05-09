@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
 import { useEffect } from "react";
 import ButtonBack from "./ButtonBack";
-import { useState } from "react";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -16,34 +15,15 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  const [flag, setFlag] = useState("");
-
   const { id } = useParams();
   const { isLoading, currentCity, getCityDetail } = useCitiesContext();
-  const { cityName, emoji, date, notes } = currentCity;
+  const { cityName, url, date, notes } = currentCity;
 
   useEffect(
     function () {
       getCityDetail(id);
     },
     [id]
-  );
-
-  useEffect(
-    function () {
-      async function getFlag() {
-        try {
-          const data = await fetch(`https://flagcdn.com/16x12/${emoji}.png`);
-          const res = data.url;
-          setFlag(res);
-        } catch (err) {
-          console.log(err);
-        }
-      }
-
-      getFlag();
-    },
-    [emoji]
   );
 
   if (isLoading) return <Spinner />;
@@ -53,7 +33,7 @@ function City() {
         <h6>City name</h6>
         <h3>
           <span>
-            <img src={flag} alt="" />
+            <img src={url} alt="" />
           </span>{" "}
           {cityName}
         </h3>
