@@ -3,14 +3,16 @@ import styles from "./CountryItem.module.css";
 
 function CountryItem({ country }) {
   const [flag, setFlag] = useState("");
+
   useEffect(
     function () {
       async function getFlag() {
         try {
           const data = await fetch(
-            `https://flagcdn.com/16x12/${country.code.toLowerCase()}.png`
+            `https://flagcdn.com/16x12/${country.emoji}.png`
           );
-          setFlag(data.url);
+          const res = data.url;
+          setFlag(res);
         } catch (err) {
           console.log(err);
         }

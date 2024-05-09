@@ -6,7 +6,7 @@ const BASE_URL = "http://localhost:1227/";
 const CitiesContext = createContext();
 
 function CitiesProvider({ children }) {
-  const [cities, setCities] = useState([]);
+  const [city, setCity] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentCity, setCurrentCity] = useState({});
 
@@ -16,7 +16,7 @@ function CitiesProvider({ children }) {
         setIsLoading(true);
         const res = await fetch(`${BASE_URL}cities`);
         const data = await res.json();
-        setCities(data);
+        setCity(data);
       } catch {
         alert("There was an error while loading data");
       } finally {
@@ -42,7 +42,7 @@ function CitiesProvider({ children }) {
 
   return (
     <CitiesContext.Provider
-      value={{ cities, isLoading, currentCity, getCityDetail }}
+      value={{ city, isLoading, currentCity, getCityDetail }}
     >
       {children}
     </CitiesContext.Provider>

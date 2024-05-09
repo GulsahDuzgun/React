@@ -1,17 +1,26 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./CityItem.module.css";
-import { Link } from "react-router-dom";
 import { useCitiesContext } from "../contexts/CitiesContext";
 
 function CityItem({ city }) {
-  const [flag, setFlag] = useState("");
   const {
     cityName,
     date,
     id,
     position: { lat, lng },
   } = city;
+
   const { currentCity } = useCitiesContext();
+
+  const formatDate = (date) =>
+    new Intl.DateTimeFormat("en", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(new Date(date));
+
+  const [flag, setFlag] = useState("");
 
   useEffect(
     function () {
@@ -31,13 +40,6 @@ function CityItem({ city }) {
     },
     [city]
   );
-
-  const formatDate = (date) =>
-    new Intl.DateTimeFormat("en", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    }).format(new Date(date));
 
   return (
     <li>
