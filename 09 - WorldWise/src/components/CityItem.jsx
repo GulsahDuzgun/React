@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 
 function CityItem({ city }) {
   const [flag, setFlag] = useState("");
-  const { cityName, date, id } = city;
+  const {
+    cityName,
+    date,
+    id,
+    position: { lat, lng },
+  } = city;
 
   useEffect(
     function () {
@@ -34,7 +39,7 @@ function CityItem({ city }) {
 
   return (
     <li>
-      <Link to={id} className={styles.cityItem}>
+      <Link to={`${id}?lat=${lat}&lng=${lng}`} className={styles.cityItem}>
         <span className={styles.emoji}>
           <img src={flag} alt="" />
         </span>

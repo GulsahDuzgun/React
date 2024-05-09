@@ -1,6 +1,6 @@
 // import styles from "./City.module.css";
 
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 // const formatDate = (date) =>
 //   new Intl.DateTimeFormat("en", {
@@ -11,8 +11,19 @@ import { useParams } from "react-router-dom";
 //   }).format(new Date(date));
 
 function City() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const lng = searchParams.get("lng");
+  const lat = searchParams.get("lat");
+  console.log(setSearchParams);
   const { id } = useParams();
-  return <h2>City {id}</h2>;
+  return (
+    <>
+      <h3>
+        {lat}, {lng}
+      </h3>
+      <h2>City {id}</h2>
+    </>
+  );
 
   // // TEMP DATA
   // const currentCity = {
