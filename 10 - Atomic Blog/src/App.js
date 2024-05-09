@@ -19,7 +19,6 @@ function App() {
     },
     [isFakeDark]
   );
-  console.log(useGetPosts());
 
   return (
     <section>
@@ -41,8 +40,6 @@ function App() {
 }
 
 function Header() {
-  console.log(useGetPosts());
-
   const { onClearPosts } = useGetPosts();
   return (
     <header>
