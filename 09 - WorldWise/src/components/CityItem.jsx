@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./CityItem.module.css";
 import { Link } from "react-router-dom";
+import { useCitiesContext } from "../contexts/CitiesContext";
 
 function CityItem({ city }) {
   const [flag, setFlag] = useState("");
@@ -10,6 +11,7 @@ function CityItem({ city }) {
     id,
     position: { lat, lng },
   } = city;
+  const { currentCity } = useCitiesContext();
 
   useEffect(
     function () {
@@ -39,7 +41,12 @@ function CityItem({ city }) {
 
   return (
     <li>
-      <Link to={`${id}?lat=${lat}&lng=${lng}`} className={styles.cityItem}>
+      <Link
+        to={`${id}?lat=${lat}&lng=${lng}`}
+        className={`${styles.cityItem} ${
+          currentCity.id === id ? styles["cityItem--active"] : ""
+        }  `}
+      >
         <span className={styles.emoji}>
           <img src={flag} alt="" />
         </span>
