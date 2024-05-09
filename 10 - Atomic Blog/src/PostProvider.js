@@ -47,4 +47,13 @@ function PostProvider({ children }) {
   );
 }
 
-export { PostProvider, PostContext };
+function useGetPosts() {
+  const context = useContext(PostContext);
+  if (context === undefined)
+    throw new Error(
+      "PostContext was used outside of the PostProvider. Check the component tree"
+    );
+  return context;
+}
+
+export { PostProvider, useGetPosts };
