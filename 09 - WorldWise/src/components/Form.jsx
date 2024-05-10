@@ -1,10 +1,14 @@
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./Form.module.css";
 import Button from "./Button";
 import ButtonBack from "./ButtonBack";
+import { useURLParams } from "../hooks/useURLParams";
+import Spinner from "./Spinner";
+import Message from "./Message";
+const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -19,6 +23,39 @@ function Form() {
   // const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
+  const [isLoadingGetCity, setIsLoadingGetCity] = useState(false);
+  const [isErrGetCity, setErrGetCity] = useState("");
+  const { lat, lng } = useURLParams();
+  const [emoji, setEmoji] = useState("");
+
+  useEffect(
+    function () {
+      async function getClickedCityInfo() {
+        try {
+          setErrGetCity("");
+          setIsLoadingGetCity(true);
+          const res = await fetch(
+            `${BASE_URL}?latitude=${lat}&longitude=${lng}`
+          );
+          const data = await res.json();
+          if (!data?.countryCode)
+            throw new Error("There is no city in there,Opps... ");
+          setCityName(data.city || data.locality || "");
+          setEmoji(
+            `https://flagcdn.com/16x12/${data?.countryCode.toLowerCase()}.png`
+          );
+        } catch (err) {
+          setErrGetCity(err.message);
+        } finally {
+          setIsLoadingGetCity(false);
+        }
+      }
+      getClickedCityInfo();
+    },
+    [lat, lng]
+  );
+  if (isLoadingGetCity) return <Spinner />;
+  if (isErrGetCity) return <Message message={isErrGetCity} />;
 
   return (
     <form className={styles.form}>
@@ -29,7 +66,9 @@ function Form() {
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         />
-        {/* <span className={styles.flag}>{emoji}</span> */}
+        <span className={styles.flag}>
+          <img src={emoji} alt="flag" />
+        </span>
       </div>
 
       <div className={styles.row}>
