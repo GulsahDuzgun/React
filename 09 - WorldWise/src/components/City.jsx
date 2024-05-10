@@ -17,7 +17,7 @@ const formatDate = (date) =>
 function City() {
   const { id } = useParams();
   const { isLoading, currentCity, getCityDetail } = useCitiesContext();
-  const { cityName, url, date, notes } = currentCity;
+  const { cityName, date, notes, emoji } = currentCity;
 
   useEffect(
     function () {
@@ -33,7 +33,10 @@ function City() {
         <h6>City name</h6>
         <h3>
           <span>
-            <img src={url} alt="" />
+            <img
+              src={`https://flagcdn.com/16x12/${emoji.toLowerCase()}.png`}
+              alt="flag"
+            />
           </span>{" "}
           {cityName}
         </h3>

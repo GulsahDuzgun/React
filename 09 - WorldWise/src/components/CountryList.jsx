@@ -17,7 +17,7 @@ function CountryList() {
     if (acc.map((el) => el.country).includes(curElement.country))
       return [...acc];
     else {
-      return [...acc, { url: curElement.url, country: curElement.country }];
+      return [...acc, { emoji: curElement.emoji, country: curElement.country }];
     }
   }, []);
 

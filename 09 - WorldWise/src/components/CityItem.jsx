@@ -8,7 +8,7 @@ function CityItem({ city }) {
     date,
     id,
     position: { lat, lng },
-    url,
+    emoji,
   } = city;
 
   const { currentCity } = useCitiesContext();
@@ -29,7 +29,10 @@ function CityItem({ city }) {
         }  `}
       >
         <span className={styles.emoji}>
-          <img src={url} alt="" />
+          <img
+            src={`https://flagcdn.com/16x12/${emoji.toLowerCase()}.png`}
+            alt="flag"
+          />
         </span>
         <h3 className={styles.name}>{cityName}</h3>
         <time className={styles.date}>{formatDate(date)}</time>

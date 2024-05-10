@@ -4,7 +4,10 @@ function CountryItem({ country }) {
   return (
     <li className={styles.countryItem}>
       <span>
-        <img src={country.url} alt="" />
+        <img
+          src={`https://flagcdn.com/16x12/${country.emoji.toLowerCase()}.png`}
+          alt="flag"
+        />
       </span>
       <span>{country.country}</span>
     </li>
