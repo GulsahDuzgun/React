@@ -17,7 +17,7 @@ import { useURLParams } from "../hooks/useURLParams";
 
 function Map() {
   const [mapPosition, setMapPosition] = useState([
-    40.46635901755316, -3.7133789062500004,
+    40.46635901755316, 3.7133789062500004,
   ]);
   const { lat, lng } = useURLParams();
   const {

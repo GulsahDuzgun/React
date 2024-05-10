@@ -68,6 +68,10 @@ input:focus {
   border-radius: 5px;
 }
 
+.react-datepicker__tab-loop {
+  position: absolute;
+}
+
 /*
 "importCSSModule": {
     "prefix": "csm",

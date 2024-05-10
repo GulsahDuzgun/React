@@ -1,22 +1,16 @@
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 
 import { useEffect, useState } from "react";
+import { useURLParams } from "../hooks/useURLParams";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import styles from "./Form.module.css";
 import Button from "./Button";
 import ButtonBack from "./ButtonBack";
-import { useURLParams } from "../hooks/useURLParams";
 import Spinner from "./Spinner";
 import Message from "./Message";
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
-
-export function convertToEmoji(countryCode) {
-  const codePoints = countryCode
-    .toUpperCase()
-    .split("")
-    .map((char) => 127397 + char.charCodeAt());
-  return String.fromCodePoint(...codePoints);
-}
 
 function Form() {
   const [cityName, setCityName] = useState("");
@@ -25,6 +19,7 @@ function Form() {
   const [notes, setNotes] = useState("");
   const [isLoadingGetCity, setIsLoadingGetCity] = useState(false);
   const [isErrGetCity, setErrGetCity] = useState("");
+
   const { lat, lng } = useURLParams();
   const [emoji, setEmoji] = useState("");
 
@@ -32,6 +27,7 @@ function Form() {
     function () {
       async function getClickedCityInfo() {
         try {
+          if (!lat && !lng) return;
           setErrGetCity("");
           setIsLoadingGetCity(true);
           const res = await fetch(
@@ -39,7 +35,7 @@ function Form() {
           );
           const data = await res.json();
           if (!data?.countryCode)
-            throw new Error("There is no city in there,Opps... ");
+            throw new Error("There is no city in there. Opps... ");
           setCityName(data.city || data.locality || "");
           setEmoji(
             `https://flagcdn.com/16x12/${data?.countryCode.toLowerCase()}.png`
@@ -54,8 +50,12 @@ function Form() {
     },
     [lat, lng]
   );
+
   if (isLoadingGetCity) return <Spinner />;
+
   if (isErrGetCity) return <Message message={isErrGetCity} />;
+
+  if (!lat & !lng) return <Message message="Start by clicking on the map" />;
 
   return (
     <form className={styles.form}>
@@ -67,16 +67,23 @@ function Form() {
           value={cityName}
         />
         <span className={styles.flag}>
-          <img src={emoji} alt="flag" />
+          {emoji && <img src={emoji} alt="flag" />}
         </span>
       </div>
 
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
-        <input
+        {/* <input
           id="date"
           onChange={(e) => setDate(e.target.value)}
           value={date}
+        /> */}
+        <DatePicker
+          wrapperClassName="datePicker"
+          onChange={(date) => setDate(date)}
+          selected={date}
+          id="date"
+          dateFormat="dd/MM/yyyy"
         />
       </div>
 
