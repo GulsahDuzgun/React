@@ -34,7 +34,7 @@ function City() {
         <h3>
           <span>
             <img
-              src={`https://flagcdn.com/16x12/${emoji.toLowerCase()}.png`}
+              src={`https://flagcdn.com/16x12/${emoji?.toLowerCase()}.png`}
               alt="flag"
             />
           </span>{" "}
