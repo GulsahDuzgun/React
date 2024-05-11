@@ -3,6 +3,7 @@ import PageNav from "../components/PageNav";
 import styles from "./Login.module.css";
 import { useAuthCountext } from "../contexts/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
@@ -13,7 +14,7 @@ export default function Login() {
 
   function handleLogin(e) {
     e.preventDefault();
-    login(email, password);
+    if (email && password) login(email, password);
     console.log(isAuthenticated);
   }
 
@@ -21,7 +22,7 @@ export default function Login() {
     function () {
       isAuthenticated && navigate("/app");
     },
-    [isAuthenticated]
+    [isAuthenticated, navigate]
   );
 
   return (
@@ -49,7 +50,9 @@ export default function Login() {
         </div>
 
         <div>
-          <button onClick={(e) => handleLogin(e)}>Login</button>
+          <Button type="primary" handleClick={(e) => handleLogin(e)}>
+            Login
+          </Button>
         </div>
       </form>
     </main>
