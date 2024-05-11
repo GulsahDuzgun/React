@@ -4,12 +4,14 @@ import styles from "./Login.module.css";
 import { useAuthCountext } from "../contexts/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import Message from "../components/Message";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");
-  const { login, isAuthenticated } = useAuthCountext();
+
+  const { login, error, isAuthenticated } = useAuthCountext();
   const navigate = useNavigate();
 
   function handleLogin(e) {
@@ -27,6 +29,7 @@ export default function Login() {
   return (
     <main className={styles.login}>
       <PageNav />
+      {error && <Message message={error} />}
       <form className={styles.form}>
         <div className={styles.row}>
           <label htmlFor="email">Email address</label>
