@@ -13,18 +13,6 @@
       "emoji": "NO"
     },
     {
-      "id": "201c",
-      "cityName": "Sunndal",
-      "country": "Norway",
-      "date": "2024-05-10T17:29:09.158Z",
-      "notes": "",
-      "position": {
-        "lat": "62.55285695857292",
-        "lng": "9.096679687500002"
-      },
-      "emoji": "NO"
-    },
-    {
       "id": "cdfa",
       "cityName": "Ripley",
       "country": "United Kingdom of Great Britain and Northern Ireland (the)",
@@ -35,6 +23,18 @@
         "lng": "-1.5161132812500002"
       },
       "emoji": "GB"
+    },
+    {
+      "id": "d41b",
+      "cityName": "Istanbul",
+      "country": "Turkiye",
+      "date": "2024-05-11T07:59:18.714Z",
+      "notes": "",
+      "position": {
+        "lat": "41.02964338716641",
+        "lng": "28.7841796875"
+      },
+      "emoji": "TR"
     }
   ]
 }
