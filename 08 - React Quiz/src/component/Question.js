@@ -1,14 +1,17 @@
 import React from "react";
+import { useQuizContext } from "../contexts/QuizContext";
 
-export default function Question({ question, dispatch, answer }) {
+export default function Question() {
+  const { questions, dispatch, answer, index } = useQuizContext();
+
   return (
     <div className="options">
-      {question.options.map((option, indx) => (
+      {questions[index].options.map((option, indx) => (
         <button
           disabled={!!answer}
           className={`btn btn-option ${
             answer !== null
-              ? indx === question.correctOption
+              ? indx === questions.correctOption
                 ? "correct"
                 : "wrong"
               : ""
