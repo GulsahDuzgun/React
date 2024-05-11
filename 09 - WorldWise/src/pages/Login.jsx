@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageNav from "../components/PageNav";
 import styles from "./Login.module.css";
+import { useAuthCountext } from "../contexts/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");
+  const { login, isAuthenticated } = useAuthCountext();
+  const navigate = useNavigate();
+
+  function handleLogin(e) {
+    e.preventDefault();
+    login(email, password);
+    console.log(isAuthenticated);
+  }
+
+  useEffect(
+    function () {
+      isAuthenticated && navigate("/app");
+    },
+    [isAuthenticated]
+  );
 
   return (
     <main className={styles.login}>
@@ -32,7 +49,7 @@ export default function Login() {
         </div>
 
         <div>
-          <button>Login</button>
+          <button onClick={(e) => handleLogin(e)}>Login</button>
         </div>
       </form>
     </main>
