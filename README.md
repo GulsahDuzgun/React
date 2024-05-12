@@ -2,7 +2,7 @@
 
 ## [01 - Pizza Menu]
 
-### What did I learn while coding this project?
+#### What did I learn while coding this project?
 
 > #
 >
@@ -23,7 +23,7 @@
 
 ## [03 - Steps]
 
-### What did I learn while coding this project?
+#### What did I learn while coding this project?
 
 > #
 >
@@ -41,7 +41,7 @@
 
 ## [04 - Travel List]
 
-### What did I learn while coding this project?
+#### What did I learn while coding this project?
 
 > #
 >
@@ -61,7 +61,7 @@
 
 ## [06 - usePopcorn]
 
-### What did I learn while coding this project?
+#### What did I learn while coding this project?
 
 > #
 >
@@ -78,7 +78,7 @@
 
 ## [07 - How React Works]
 
-### What did I learn while coding this project?
+#### What did I learn while coding this project?
 
 > #
 >
@@ -96,7 +96,7 @@
 > - _The Reconciler:**FIBER**: During the initial render of the application Fiber takes the entire React element tree so the Virtual DOM and based on it builds another tree which is the Fiber tree.Fiber tree is a special internal tree where for each component instance and DOM element in the app is called Fiber.,_
 > - _The special about Fiber tree is unlike React elements in the Virtual DOM, Fiber are not created on every render. So the Fiber tree is never destroyed. Instead, it's a mutable data structure and once it has been created during the initial render it is simply mutated over and over again in future reconciliation steps. And this makes Fibers the perfect place for keeping track of things like current state, props, side effects, used hooks, queue of work to do like updating state, updating refs, running registered side effects, performing DOM updates , etc. This is also why fiber is defined as unit of work. ,_
 > - _In Fiber tree, the Fibers are arranged in a different way than the elements in the React element tree. Instead of parent-child relationship each first child has a link to its parent and all the other children then have a link to their previous sibling. This kind of structure is called a linked list and it makes it easier for React to process the work that is associated with each Fiber.,_
-> - _The one extremely important characteristic of the Fiber reconciler is that work can be performed asynchronously. This means that the rendering process which is what the reconciler does can be split into chunks, sone tasks can be prioritized over others and work can be paused, reused or thrown away if not valid anymore.In render phase is not created any virtual DOM.,_
+> - _The one extremely important characteristic of the Fiber reconciler is that work can be performed asynchronously. This means that the rendering process which is what the reconciler does can be split into chunks, sone tasks can be prioritized over others and work can be paused, reused or thrown away if not valid anymore. In render phase is not created any virtual DOM.,_
 > - _The process of comparing elements in current fiber tree and updated fiber tree step-by-step based on their position in the tree is called diffing.Once this process is over all these DOM mutations will be placed into a list called list of effects. The final result of render phase is list of effects ,_
 > - _**What is Commit Phase?** React applies the result of Render Phase -List of DOM updates- one by one to the actual DOM elements that were in the already existing DOM tree. Riding to the DOM happend all in one go, we can say commit phase is synchronous unlike the rendering phase which can be paused. Committing can not be interrupted. This is necessary so the DOM never shows partial results which ensures the UI always stays consistent. In fact, that is the whole point of dividing the entire process into the render phase. Rendering can be paused, resumed and discarded. The results of all that rendering can be flushed to the DOM in one go then Commit Phase is completed the work in progress fiber tree becomes the current tree for the next render cycle.That because fiber trees are never discarded and never recreated from scratch. Instead they are reused in order to say precious rendering time. After Commit Phase the browser will notice the DOM has been changed and as a result, it will repaint the screen whenever it has some idle time.,_
 > - _Render Phase is managed by React. React dosn't touch the DOM. It has no idea where the results of the render phase will actually be committed and painted. React only does the Render Phase but not the Commit Phase. The reason for that is React was designed to be used independently from the platform where elements will actually be shown. Therefor React can be used many different so-called hosts. Comit Phase is managed by ReactDOM.,_
@@ -152,7 +152,7 @@
 
 ## [08 - React Quiz]
 
-### What did I learn while coding this project?
+#### What did I learn while coding this project?
 
 > #
 >
@@ -169,7 +169,7 @@
 
 ## [09 - WorldWise]
 
-### What did I learn while coding this project?
+#### What did I learn while coding this project?
 
 > #
 >
