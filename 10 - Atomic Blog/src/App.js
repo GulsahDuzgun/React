@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { PostProvider, useGetPosts } from "./PostProvider";
 import { faker } from "@faker-js/faker";
+import Test from "./Test";
 
 function createRandomPost() {
   return {
@@ -84,6 +85,7 @@ function Posts() {
   return (
     <section>
       <List />
+      <Test />
     </section>
   );
 }
