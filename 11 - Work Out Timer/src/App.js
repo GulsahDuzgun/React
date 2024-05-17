@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Calculator from "./Calculator";
 import ToggleSounds from "./ToggleSounds";
 
@@ -32,14 +32,6 @@ function App() {
     },
   ];
 
-  const allowSoundMemo = useMemo(() => {
-    return allowSound;
-  }, [allowSound]);
-
-  const arrayMemo = useMemo(() => {
-    return workouts;
-  }, [workouts]);
-
   function formatTime(date) {
     return new Intl.DateTimeFormat("en", {
       month: "short",
@@ -62,8 +54,8 @@ function App() {
     <main>
       <h1>Workout timer</h1>
       <time>For your workout on {time}</time>
-      <ToggleSounds allowSound={allowSoundMemo} setAllowSound={setAllowSound} />
-      <Calculator workouts={arrayMemo} allowSound={allowSoundMemo} />
+      <ToggleSounds allowSound={allowSound} setAllowSound={setAllowSound} />
+      <Calculator workouts={workouts} allowSound={allowSound} />
     </main>
   );
 }
