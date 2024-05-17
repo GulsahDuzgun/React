@@ -35,6 +35,42 @@
         "lng": "28.7841796875"
       },
       "emoji": "TR"
+    },
+    {
+      "id": "5abb",
+      "cityName": "Bay of Biscay",
+      "country": "France",
+      "date": "2024-05-17T13:01:59.188Z",
+      "notes": "",
+      "position": {
+        "lat": "44.11914151643737",
+        "lng": "-1.40625"
+      },
+      "emoji": "FR"
+    },
+    {
+      "id": "89c4",
+      "cityName": "Bjornafjorden",
+      "country": "Norway",
+      "date": "2024-05-17T13:05:59.255Z",
+      "notes": "",
+      "position": {
+        "lat": "60.108670463036",
+        "lng": "5.77880859375"
+      },
+      "emoji": "NO"
+    },
+    {
+      "id": "15fd",
+      "cityName": "Oppdal",
+      "country": "Norway",
+      "date": "2024-05-17T13:06:10.264Z",
+      "notes": "",
+      "position": {
+        "lat": "62.562983094503075",
+        "lng": "9.602050781250002"
+      },
+      "emoji": "NO"
     }
   ]
 }
