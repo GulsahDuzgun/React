@@ -15,7 +15,7 @@ function formatTime(date) {
 function App() {
   const [time, setTime] = useState(formatTime(new Date()));
 
-  const [allowSound, setAllowSound] = useState(true);
+  const [allowSound, setAllowSound] = useState(false);
   const partOfDay = time.slice(-2);
 
   const workOutsArr = useMemo(() => {
