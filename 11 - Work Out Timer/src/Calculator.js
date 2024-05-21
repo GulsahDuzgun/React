@@ -37,11 +37,13 @@ function Calculator({ workouts, allowSound }) {
   );
 
   function handleInc() {
-    setDuration((duration) => duration + 1);
+    setDuration((duration) => Math.ceil(duration + 1));
   }
 
   function handleDec() {
-    setDuration((duration) => (duration - 1 > 0 ? duration - 1 : 0));
+    setDuration((duration) =>
+      Math.floor(duration - 1) > 0 ? Math.floor(duration - 1) : 0
+    );
   }
 
   return (
