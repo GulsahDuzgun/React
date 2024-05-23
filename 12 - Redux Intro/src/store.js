@@ -3,7 +3,7 @@ import reducerAccount from "./features/accounts/accountSlice";
 import reducerCustomer from "./features/customers/customerSlice";
 
 const rootReducer = combineReducers({
-  cutomerState: reducerCustomer,
+  customerState: reducerCustomer,
   accountState: reducerAccount,
 });
 
