@@ -8,6 +8,4 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(rootReducer);
-
-store.dispatch({ type: "customer/updateName", payload: "Deniz" });
-console.log(store.getState());
+export default store;
