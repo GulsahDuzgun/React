@@ -13,13 +13,14 @@ function AccountOperations() {
   const {
     loan: currentLoan,
     loanPurpose: currentLoanPurpose,
-    balance,
     isLoading,
   } = useSelector((state) => state.accountState);
 
   function handleDeposit() {
     if (!depositAmount || !currency) return;
-    dispatch(deposit(depositAmount, currency));
+    dispatch(deposit({ depositAmount, currency }));
+    console.log(deposit);
+
     setDepositAmount("");
     setCurrency("USD");
   }
