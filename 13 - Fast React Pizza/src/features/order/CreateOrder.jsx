@@ -5,7 +5,7 @@ const isValidPhone = (str) =>
     str
   );
  */
-
+/*
 const fakeCart = [
   {
     pizzaId: 12,
@@ -29,8 +29,7 @@ const fakeCart = [
     totalPrice: 15,
   },
 ];
-console.log(fakeCart);
-
+*/
 function CreateOrder() {
   // const [withPriority, setWithPriority] = useState(false);
   // const cart = fakeCart;
