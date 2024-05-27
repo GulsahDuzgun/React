@@ -6,10 +6,12 @@ import Menu, { loader as fetchMenu } from "./features/menu/Menu";
 import CreateOrder from "./features/order/CreateOrder";
 import Order from "./features/order/Order";
 import AppLayout from "./ui/AppLayout";
+import Error from "./ui/Error";
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -19,7 +21,12 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
-      { path: "/menu", element: <Menu />, loader: fetchMenu },
+      {
+        path: "/menu",
+        element: <Menu />,
+        loader: fetchMenu,
+        errorElement: <Error />,
+      },
       { path: "/order/new", element: <CreateOrder /> },
       { path: "/order/:orderId", element: <Order /> },
     ],
