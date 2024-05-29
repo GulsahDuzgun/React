@@ -34,7 +34,23 @@ export async function getOrder2(id) {
   return data;
 }
 
-export async function createOrder(newOrder) {
+export async function createOrder(order) {
+  const res = await fetch(`${API_URL}/order`, {
+    method: "POST",
+    body: JSON.stringify(order),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok)
+    throw new Error("There was an  error occurred while creating new order.");
+
+  const { data } = await res.json();
+  return data;
+}
+
+export async function createOrder2(newOrder) {
   try {
     const res = await fetch(`${API_URL}/order`, {
       method: "POST",
