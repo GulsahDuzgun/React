@@ -19,7 +19,7 @@ export default function SearchOrder() {
         value={id}
         onChange={(e) => setId(e.target.value)}
       />
-      <button onClick={handleSubmit}>Fetch</button>
+      <button onClick={handleSubmit}>Fetch Data</button>
     </form>
   );
 }
