@@ -8,12 +8,14 @@ export default function AppLayout() {
   console.log(isLoading);
 
   return (
-    <div className="layout">
+    <div className="layout grid h-screen grid-rows-[auto_1fr_auto]">
       {isLoading === "loading" && <Loader />}
       <Header />
-      <main>
-        <Outlet />
-      </main>
+      <div className="overflow-scroll">
+        <main className="mx-auto max-w-6xl  bg-red-500 ">
+          <Outlet />
+        </main>
+      </div>
       <CartOverview />
     </div>
   );
