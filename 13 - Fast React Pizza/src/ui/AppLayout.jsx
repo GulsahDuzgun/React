@@ -8,7 +8,8 @@ export default function AppLayout() {
 
   return (
     <div className="layout grid h-screen grid-rows-[auto_1fr_auto]">
-      {isLoading === "loading" && <Loader />}
+      {/* {isLoading === "loading" && <Loader />} */}
+      {true && <Loader />}
       <Header />
       <div className="overflow-scroll">
         <main className="mx-auto max-w-6xl  ">
