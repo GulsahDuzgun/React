@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cart: [
-    {
-      pizzaId: 5,
-      name: "Diavola",
-      unitPrice: 16,
-      imageUrl:
-        "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-5.jpg",
-      ingredients: ["tomato", "mozzarella", "spicy salami", "chili flakes"],
-      soldOut: false,
-      quantity: 1,
-      totalPrice: 16,
-    },
-  ],
+  cart: [],
+  // cart: [
+  //   {
+  //     pizzaId: 5,
+  //     name: "Diavola",
+  //     unitPrice: 16,
+  //     imageUrl:
+  //       "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-5.jpg",
+  //     ingredients: ["tomato", "mozzarella", "spicy salami", "chili flakes"],
+  //     soldOut: false,
+  //     quantity: 1,
+  //     totalPrice: 16,
+  //   },
+  // ],
 };
 
 const cartReducer = createSlice({
@@ -51,3 +52,13 @@ export const {
 } = cartReducer.actions;
 
 export default cartReducer.reducer;
+
+export const getTotalQuantity = (state) =>
+  state.cart.cart.reduce((acc) => acc + 1, 0);
+
+export const getTotalCost = (state) =>
+  state.cart.cart.reduce((acc, cur) => acc + cur.totalPrice, 0);
+
+export const getCart = (state) => state.cart.cart;
+
+export const getUserName = (state) => state.user.userName;
