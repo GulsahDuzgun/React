@@ -21,3 +21,24 @@ async function fetchAddress() {
   return { position, address };
 }
 */
+
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  userName: "Vahşi Kelebek",
+};
+
+const UserReducer = createSlice({
+  name: "user",
+  initialState,
+  reducers: {
+    updateName(state, action) {
+      state.userName = action.payload;
+    },
+  },
+});
+
+export const { updateName } = UserReducer.actions;
+console.log(UserReducer);
+
+export default UserReducer.reducer;
