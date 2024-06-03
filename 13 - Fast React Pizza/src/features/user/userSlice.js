@@ -28,7 +28,7 @@ const initialState = {
   userName: "",
 };
 
-const UserReducer = createSlice({
+const userReducer = createSlice({
   name: "user",
   initialState,
   reducers: {
@@ -38,6 +38,6 @@ const UserReducer = createSlice({
   },
 });
 
-export const { updateName } = UserReducer.actions;
+export const { updateName } = userReducer.actions;
 
-export default UserReducer.reducer;
+export default userReducer.reducer;
