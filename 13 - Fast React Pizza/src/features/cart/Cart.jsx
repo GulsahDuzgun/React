@@ -19,7 +19,7 @@ function Cart() {
       <h2 className="mt-7 text-xl font-semibold">Your cart, {userName}</h2>
       <ul className="divide-y divide-stone-200 border-b">
         {cart.map((item, i) => (
-          <CartItem item={item} key={i} />
+          <CartItem item={item} a={i} key={i} />
         ))}
       </ul>
       <div className="mt-6 space-x-2">

@@ -22,10 +22,11 @@ const cartReducer = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
+      if (action.payload.soldOut) return;
       state.cart.push(action.payload);
     },
     deleteItem(state, action) {
-      state.cart = state.cart.filter((item) => item.id !== action.payload);
+      state.cart = state.cart.filter((item) => item.pizzaId !== action.payload);
     },
     increaseItemQuantity(state, action) {
       const item = state.cart.find((item) => item.pizzaId === action.payload);
@@ -62,3 +63,12 @@ export const getTotalCost = (state) =>
 export const getCart = (state) => state.cart.cart;
 
 export const getUserName = (state) => state.user.userName;
+
+// export const getItemQuantity = (id) => (state) =>
+//   state.cart.cart?.find((item) => item.pizzaId === id)?.quantity ?? 0;
+
+export function getItemQuantity(id) {
+  return function (state) {
+    return state.cart.cart?.find((item) => item.pizzaId === id)?.quantity ?? 0;
+  };
+}
