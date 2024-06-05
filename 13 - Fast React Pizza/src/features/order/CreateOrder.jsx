@@ -1,11 +1,12 @@
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { createOrder } from "../../services/apiRestaurant";
 import Button from "../../ui/Button";
 import { clearCart, getCart, getTotalCost } from "../cart/cartSlice";
 import { formatCurrency } from "../../utils/helpers";
 import store from "../../store";
+import { fetchAdressThunk } from "../user/userSlice";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -24,6 +25,7 @@ function CreateOrder() {
   const orderedPizzas = useSelector(getCart);
   const userName = useSelector((state) => state.user.userName);
   const [isPriority, setPriority] = useState();
+  const dispatch = useDispatch();
 
   const totalCartPrice = useSelector(getTotalCost);
   const priorityPrice = isPriority ? totalCartPrice * 0.2 : 0;
@@ -103,6 +105,7 @@ function CreateOrder() {
           </Button>
         </div>
       </Form>
+      <button onClick={() => dispatch(fetchAdressThunk())}>Address</button>
     </div>
   );
 }
