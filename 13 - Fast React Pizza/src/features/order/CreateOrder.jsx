@@ -23,9 +23,17 @@ function CreateOrder() {
 
   const submittedData = useActionData();
   const orderedPizzas = useSelector(getCart);
-  const userName = useSelector((state) => state.user.userName);
+  const {
+    userName,
+    status: addressStatus,
+    position,
+    address,
+    error: addressError,
+  } = useSelector((state) => state.user);
   const [isPriority, setPriority] = useState();
   const dispatch = useDispatch();
+
+  const isLoadingAddress = addressStatus === "loading";
 
   const totalCartPrice = useSelector(getTotalCost);
   const priorityPrice = isPriority ? totalCartPrice * 0.2 : 0;
@@ -66,21 +74,54 @@ function CreateOrder() {
           </div>
         </div>
 
-        <div className="mb-5 flex  flex-col gap-2  sm:flex-row sm:items-center">
+        <div className="relative mb-5  flex flex-col  gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">Address</label>
           <div className="grow">
             <input
               type="text"
               className="input w-full"
               name="address"
+              defaultValue={address}
               required
+              disabled={isLoadingAddress}
             />
+            {addressError && (
+              <p
+                className="mt-2 rounded-lg bg-red-100 px-2 
+              py-0.5 text-xs font-semibold text-red-700  sm:px-2 sm:py-1"
+              >
+                {addressError}
+              </p>
+            )}
           </div>
+          {!position.latitude && !position.longitude && (
+            <span className="absolute bottom-8 right-1  z-10 sm:top-1 md:bottom-1.5">
+              <Button
+                type="small"
+                disabled={isLoadingAddress}
+                handleClickEvent={(e) => {
+                  e.preventDefault();
+                  dispatch(fetchAdressThunk());
+                }}
+              >
+                Get Position
+              </Button>
+            </span>
+          )}
         </div>
         <input
           type="hidden"
           name="cart"
           value={JSON.stringify(orderedPizzas)}
+        />
+        <input
+          type="hidden"
+          name="position"
+          value={
+            position.latitude && position.longitude
+              ? `${position.latitude}, ${position.longitude}`
+              : ""
+          }
         />
 
         <div className="mb-12 mt-6 flex items-center gap-5">
@@ -98,14 +139,13 @@ function CreateOrder() {
         </div>
 
         <div>
-          <Button type="primary" disabled={isSubmitting}>
+          <Button type="primary" disabled={isSubmitting || isLoadingAddress}>
             {isSubmitting
               ? "Placing order..."
               : `Order now from ${formatCurrency(totalCost)}`}
           </Button>
         </div>
       </Form>
-      <button onClick={() => dispatch(fetchAdressThunk())}>Address</button>
     </div>
   );
 }

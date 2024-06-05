@@ -29,7 +29,7 @@ const initialState = {
   userName: "",
   status: "idle",
   position: "",
-  adress: "",
+  address: "",
   error: "",
 };
 
@@ -69,11 +69,12 @@ const userReducer = createSlice({
     builder
       .addCase(fetchAdressThunk.pending, (state, action) => {
         state.status = "loading";
+        state.error = "";
       })
       .addCase(fetchAdressThunk.fulfilled, (state, action) => {
         state.status = "success";
         state.position = action.payload.position;
-        state.adress = action.payload.address;
+        state.address = action.payload.address;
       })
       .addCase(fetchAdressThunk.rejected, (state, action) => {
         state.status = "error";
