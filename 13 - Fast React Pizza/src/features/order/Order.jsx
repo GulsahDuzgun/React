@@ -9,6 +9,7 @@ import {
   formatDate,
 } from "../../utils/helpers";
 import { useEffect } from "react";
+import UpdateOrder from "./UpdateOrder";
 
 function Order() {
   const { data: orderDetail } = useLoaderData();
@@ -16,7 +17,6 @@ function Order() {
 
   useEffect(() => {
     if (fetcher.state === "idle" && !fetcher.data) {
-      console.log("fetch");
       fetcher.load("/menu");
     }
   }, [fetcher]);
@@ -87,6 +87,8 @@ function Order() {
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
+
+      <div className="text-right">{!priority && <UpdateOrder />}</div>
     </div>
   );
 }
