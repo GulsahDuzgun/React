@@ -6,7 +6,6 @@ const Heading = styled.h1`
     css`
       font-size: 30px;
       font-weight: 600;
-      background-color: orangered;
     `}
 
   ${(props) =>
@@ -14,7 +13,6 @@ const Heading = styled.h1`
     css`
       font-size: 24px;
       font-weight: 500;
-      background-color: rebeccapurple;
     `}
 
     line-height:4.8rem;
