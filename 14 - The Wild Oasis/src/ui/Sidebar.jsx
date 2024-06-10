@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Logo from "./Logo";
+import MainNav from "./MainNav";
 
 export default function Sidebar() {
   const StyledSidebar = styled.aside`
@@ -6,7 +8,13 @@ export default function Sidebar() {
     padding: 3.2rem 2.4rem;
     border-right: 1px solid var(--color-grey-100);
     grid-row: 1/ -1;
+    gap: 3.2rem;
   `;
 
-  return <StyledSidebar>Sidebar</StyledSidebar>;
+  return (
+    <StyledSidebar>
+      <Logo />
+      <MainNav />
+    </StyledSidebar>
+  );
 }

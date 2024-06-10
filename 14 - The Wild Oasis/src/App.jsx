@@ -19,14 +19,14 @@ export default function App() {
           <Route element={<AppLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="account" element={<Account />}></Route>
+            <Route path="account" element={<Account />} />
             <Route path="cabins" element={<Cabins />} />
             <Route path="bookings" element={<Bookings />} />
-            <Route path="login" element={<Login />} />
-            <Route path="user" element={<Users />} />
+            <Route path="users" element={<Users />} />
             <Route path="settings" element={<Settings />} />
-            <Route path="*" element={<PageNotFound />} />
           </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </>
