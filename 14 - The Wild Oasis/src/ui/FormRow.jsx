@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export default function FormRow({ label, error, children }) {
-  console.log(children?.props?.id);
-
   const FormRow = styled.div`
     display: grid;
     align-items: center;

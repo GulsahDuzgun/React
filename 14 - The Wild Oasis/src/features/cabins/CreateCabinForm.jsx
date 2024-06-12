@@ -31,7 +31,7 @@ function CreateCabinForm() {
   });
 
   function handleFormSubmit(data) {
-    mutate(data);
+    mutate({ ...data, image: data.image[0] });
   }
 
   function hadleFormError(errors) {
@@ -111,7 +111,13 @@ function CreateCabinForm() {
       </FormRow>
       <FormRow>
         <Label htmlFor="image">Cabin photo</Label>
-        <FileInput id="image" accept="image/*" />
+        <FileInput
+          id="image"
+          accept="image/*"
+          {...register("image", {
+            required: "This files is required",
+          })}
+        />
       </FormRow>
       <FormRow>
         {/* type is an HTML attribute! */}
