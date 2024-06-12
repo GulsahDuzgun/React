@@ -9,7 +9,6 @@ import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
 import toast from "react-hot-toast";
 import Textarea from "../../ui/Textarea";
-import Error from "../../ui/ErrorFallback";
 
 const FormRow = styled.div`
   display: grid;
@@ -42,10 +41,10 @@ const Label = styled.label`
   font-weight: 500;
 `;
 
-// const Error = styled.span`
-//   font-size: 1.4rem;
-//   color: var(--color-red-700);
-// `;
+const Error = styled.span`
+  font-size: 1.4rem;
+  color: var(--color-red-700);
+`;
 
 function CreateCabinForm() {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
@@ -100,6 +99,9 @@ function CreateCabinForm() {
           type="number"
           id="maxCapacity"
         />
+        {errors?.maxCapacity?.message && (
+          <Error>{errors?.maxCapacity?.message}</Error>
+        )}
       </FormRow>
       <FormRow>
         <Label htmlFor="regularPrice">Regular price</Label>
@@ -114,6 +116,9 @@ function CreateCabinForm() {
           type="number"
           id="regularPrice"
         />
+        {errors?.regularPrice?.message && (
+          <Error>{errors.regularPrice.message}</Error>
+        )}
       </FormRow>
       <FormRow>
         <Label htmlFor="discount">Discount</Label>
