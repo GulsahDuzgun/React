@@ -22,7 +22,7 @@ export async function deleteCabin(id) {
   return data;
 }
 
-export async function createCabin(newCabin) {
+export async function createEditCabin(newCabin, id) {
   //https://gabbeqyyjjkdxvqxuqsn.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg
 
   const imgUrl = `cabin-${Math.random()}-${newCabin.image?.name}`.replaceAll(
