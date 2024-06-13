@@ -24,8 +24,6 @@ export async function deleteCabin(id) {
 
 export async function createEditCabin(newCabin, id) {
   //https://gabbeqyyjjkdxvqxuqsn.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg
-  console.log(newCabin);
-  console.log(id);
 
   const hasImagePath = newCabin.image?.startsWith?.(supabaseUrl);
   const imgUrl = `cabin-${Math.random()}-${newCabin.image?.name}`.replaceAll(
@@ -35,9 +33,6 @@ export async function createEditCabin(newCabin, id) {
   const imageName = hasImagePath
     ? newCabin.image
     : `${supabaseUrl}/storage/v1/object/public/cabin-images/${imgUrl}`;
-
-  console.log(newCabin);
-  console.log(id);
 
   let query = await supabase.from("cabins");
   //create cabin
@@ -59,6 +54,8 @@ export async function createEditCabin(newCabin, id) {
   if (error) {
     throw new Error(`The cabin could not be ${id ? "edited" : "created"}`);
   }
+
+  if (hasImagePath) return data;
 
   //load image to bucket
   const { error: loadBucketErr } = await supabase.storage
