@@ -1,65 +1,67 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createEditCabin } from "../../services/apiCabins";
+import { useCreateCabin } from "./useCreateCabin";
 
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
 import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
-import toast from "react-hot-toast";
 import Textarea from "../../ui/Textarea";
 import FormRow from "../../ui/FormRow";
+import { useEditCabin } from "./useEditCabin";
 
-function CreateCabinForm({ cabinToEdit }) {
+function CreateCabinForm({ cabinToEdit = {} }) {
   const { id: editId, ...defaultEditValues } = cabinToEdit;
   const isEditForm = Boolean(editId);
 
   const { register, handleSubmit, reset, getValues, formState } = useForm({
     defaultValues: isEditForm ? defaultEditValues : {},
   });
-  const queryClient = useQueryClient();
   const { errors } = formState;
 
-  const { mutate: createCabin, isLoading: isCreating } = useMutation({
-    mutationFn: createEditCabin,
-    onSuccess: () => {
-      toast.success("New cabin has been successfully added");
-      queryClient.invalidateQueries({
-        queryKey: ["cabins"],
-      });
-      reset();
-    },
-    onError: (err) => {
-      toast.error(err.message);
-    },
-  });
+  const { createCabinFunc: createCabin, isCreating } = useCreateCabin();
 
-  const { mutate: editCabin, isLoading: isEditing } = useMutation({
-    mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),
-    onSuccess: () => {
-      toast.success("New cabin has been successfully edited");
-      queryClient.invalidateQueries({
-        queryKey: ["cabins"],
-      });
-      reset();
-    },
-    onError: (err) => {
-      toast.error(err.message);
-    },
-  });
+  const { editCabin, isEditing } = useEditCabin();
+  // useMutation({
+  //   mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),
+  //   onSuccess: () => {
+  //     toast.success("New cabin has been successfully edited");
+  //     queryClient.invalidateQueries({
+  //       queryKey: ["cabins"],
+  //     });
+  //     reset();
+  //   },
+  //   onError: (err) => {
+  //     toast.error(err.message);
+  //   },
+  // });
 
   const isWorking = isEditing || isCreating;
 
   function handleFormSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
-    if (!isEditForm) createCabin({ ...data, image });
+    if (!isEditForm)
+      createCabin(
+        { ...data, image },
+        {
+          onSuccess: () => {
+            reset();
+          },
+        }
+      );
     else
-      editCabin({
-        newCabinData: { ...data, image },
-        id: editId,
-      });
+      editCabin(
+        {
+          newCabinData: { ...data, image },
+          id: editId,
+        },
+        {
+          onSuccess: () => {
+            reset();
+          },
+        }
+      );
   }
 
   function hadleFormError(errors) {
