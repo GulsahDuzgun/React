@@ -2,6 +2,7 @@ import { HiXMark } from "react-icons/hi2";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 import { cloneElement, createContext, useContext, useState } from "react";
+import { useCapture } from "../hooks/useCapture";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -67,12 +68,13 @@ export default function Modal({ children }) {
 
 function Window({ name, children }) {
   const { openName, close } = useContext(ModalContext);
+  const { ref } = useCapture(close);
 
   if (openName !== name) return null;
 
   return createPortal(
     <Overlay>
-      <StyledModal>
+      <StyledModal ref={ref}>
         <Button onClick={close}>
           <HiXMark />
         </Button>
