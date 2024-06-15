@@ -13,3 +13,17 @@ const StyledSelect = styled.select`
   font-weight: 500;
   box-shadow: var(--shadow-sm);
 `;
+
+export default function Select({ options, onChange, currentParam, ...props }) {
+  // const [searchParam] = useSearchParams();
+  // const currentParam = searchParam.get("sortBy");
+  return (
+    <StyledSelect {...props} onChange={onChange} value={currentParam}>
+      {options.map((option, indx) => (
+        <option value={option.value} key={indx}>
+          {option.label}
+        </option>
+      ))}
+    </StyledSelect>
+  );
+}
