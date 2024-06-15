@@ -7,7 +7,7 @@ export function useCapture(handleFunc, listenCapturing = true) {
     function () {
       function handleCapturePhase(e) {
         if (ref.current && !ref.current.contains(e.target)) {
-          handleFunc();
+          handleFunc?.();
         }
       }
 
@@ -22,5 +22,5 @@ export function useCapture(handleFunc, listenCapturing = true) {
     },
     [handleFunc, listenCapturing]
   );
-  return { ref };
+  return ref;
 }

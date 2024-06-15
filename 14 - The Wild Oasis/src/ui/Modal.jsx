@@ -68,7 +68,7 @@ export default function Modal({ children }) {
 
 function Window({ name, children }) {
   const { openName, close } = useContext(ModalContext);
-  const { ref } = useCapture(close);
+  const ref = useCapture(close);
 
   if (openName !== name) return null;
 
