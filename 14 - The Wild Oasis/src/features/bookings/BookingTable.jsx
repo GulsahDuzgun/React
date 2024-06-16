@@ -6,9 +6,7 @@ import Empty from "../../ui/Empty";
 import { useBookings } from "./useBookings";
 
 function BookingTable() {
-  const { bookings, isLoading } = useBookings();
-
-  console.log(bookings, isLoading);
+  const { bookings } = useBookings();
 
   if (!bookings?.length) return <Empty resourceName="bookings" />;
 

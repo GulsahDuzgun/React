@@ -35,7 +35,7 @@ export default function CabinTable() {
   const [searchParams] = useSearchParams();
   const filterWord = searchParams.get("discounts") || "all";
 
-  if (!cabins.length) return <Empty resourceName="cabins" />;
+  if (!cabins?.length) return <Empty resourceName="cabins" />;
 
   //FILTER
   let newCabinsArr = [];
