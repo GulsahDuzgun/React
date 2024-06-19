@@ -33,7 +33,7 @@ import Empty from "../../ui/Empty";
 export default function CabinTable() {
   const { cabins, isLoading } = useCabins();
   const [searchParams] = useSearchParams();
-  const filterWord = searchParams.get("discounts") || "all";
+  const filterWord = searchParams.get("discount") || "all";
 
   if (!cabins?.length) return <Empty resourceName="cabins" />;
 
