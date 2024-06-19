@@ -1,6 +1,7 @@
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
+import { BOOKINGS_PER_PAGE } from "../utils/constants";
 
 const StyledPagination = styled.div`
   width: 100%;
@@ -58,13 +59,14 @@ const PaginationButton = styled.button`
   }
 `;
 
-const ITEM_PER_PAGE = 10;
-
 export default function Pagination({ count }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const currentPage = Number(searchParams.get("page")) || 1;
-  const lastPage = Math.ceil(count / ITEM_PER_PAGE);
+  const currentPage = !searchParams.get("page")
+    ? 1
+    : Number(searchParams.get("page")) || 1;
+  // const currentPage = Number(searchParams.get("page")) || 1;
+  const lastPage = Math.ceil(count / BOOKINGS_PER_PAGE);
 
   function prevPage() {
     const prev = currentPage === 1 ? 1 : currentPage - 1;
@@ -83,9 +85,9 @@ export default function Pagination({ count }) {
   return (
     <StyledPagination>
       <P>
-        Showing <span>{(currentPage - 1) * ITEM_PER_PAGE + 1}</span> to{" "}
+        Showing <span>{(currentPage - 1) * BOOKINGS_PER_PAGE + 1}</span> to{" "}
         <span>
-          {currentPage === lastPage ? count : currentPage * ITEM_PER_PAGE}
+          {currentPage === lastPage ? count : currentPage * BOOKINGS_PER_PAGE}
         </span>{" "}
         of <span>{count}</span> results
       </P>

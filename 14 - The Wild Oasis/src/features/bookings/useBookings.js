@@ -7,6 +7,10 @@ export function useBookings() {
   const filterVal = searchParams.get("status");
   const sortByVal = searchParams.get("sortBy") || "startDate-desc";
 
+  const currentPage = !searchParams.get("page")
+    ? 1
+    : Number(searchParams.get("page"));
+
   const filter =
     !filterVal || filterVal === "all"
       ? null
@@ -15,10 +19,10 @@ export function useBookings() {
   const [field, direction] = sortByVal.split("-");
   const sortBy = !sortByVal ? null : { field, direction };
 
-  const { data: bookings, isLoading } = useQuery({
-    queryFn: () => getBookings({ filter, sortBy }),
-    queryKey: ["bookings", filter, sortBy],
+  const { data: { data: bookings, count } = {}, isLoading } = useQuery({
+    queryFn: () => getBookings({ filter, sortBy, currentPage }),
+    queryKey: ["bookings", filter, sortBy, currentPage],
   });
 
-  return { bookings, isLoading };
+  return { bookings, isLoading, count };
 }

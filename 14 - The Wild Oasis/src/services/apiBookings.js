@@ -1,11 +1,13 @@
+import { BOOKINGS_PER_PAGE } from "../utils/constants";
 import { getToday } from "../utils/helpers";
 import supabase from "./supabase";
 
-export async function getBookings({ filter, sortBy }) {
+export async function getBookings({ filter, sortBy, currentPage }) {
   let query = supabase
     .from("bookings")
     .select(
-      "id, created_at, startDate, endDate, numNights, numGuests, status, totalPrice, guests(fullName, email), cabins(name)"
+      "id, created_at, startDate, endDate, numNights, numGuests, status, totalPrice, guests(fullName, email), cabins(name)",
+      { count: "exact" }
     );
 
   if (filter !== null)
@@ -16,14 +18,20 @@ export async function getBookings({ filter, sortBy }) {
       ascending: sortBy.direction === "asc",
     });
 
-  const { data, error } = await query;
+  if (currentPage) {
+    const from = (currentPage - 1) * BOOKINGS_PER_PAGE;
+    const to = from + BOOKINGS_PER_PAGE - 1;
+    query = query.range(from, to);
+  }
+
+  const { data, error, count } = await query;
 
   if (error) {
     console.log(error);
     throw new Error("Boookings could not be loaded.");
   }
 
-  return data;
+  return { data, count };
 }
 
 export async function getBooking(id) {
