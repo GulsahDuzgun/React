@@ -72,15 +72,15 @@ function BookingDetail() {
           )}
 
           <Modal.Open opens="delete">
-            <Button variation="danger" disabled={isDeleting}>
-              Delete booking
-            </Button>
+            <Button variation="danger">Delete booking</Button>
           </Modal.Open>
           <Modal.Window name="delete">
             <ConfirmDelete
+              disabled={isDeleting}
               resourceName="booking"
               onConfirm={() =>
                 deleteBookingFunc(bookingId, {
+                  //mutation options
                   onSettled: () => {
                     navigate(-1);
                   },
