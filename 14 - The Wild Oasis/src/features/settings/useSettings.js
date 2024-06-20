@@ -9,3 +9,5 @@ export function useSettings() {
 
   return { settings, isLoading };
 }
+
+//useQuery for get, useMutation for updates
