@@ -115,7 +115,7 @@ export async function updateBooking(id, obj) {
     console.error(error);
     throw new Error("Booking could not be updated");
   }
-  return data;
+  return data; //onSuccess param
 }
 
 export async function deleteBooking(id) {
