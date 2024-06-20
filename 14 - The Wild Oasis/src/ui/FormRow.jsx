@@ -4,7 +4,7 @@ export default function FormRow({ label, error, children }) {
   const FormRow = styled.div`
     display: grid;
     align-items: center;
-    grid-template-columns: 24rem 1fr 1.2fr;
+    /* grid-template-columns: 24rem 1fr 1.2fr; */
     gap: 2.4rem;
 
     padding: 1.2rem 0;
@@ -22,8 +22,7 @@ export default function FormRow({ label, error, children }) {
     }
 
     &:has(button) {
-      display: flex;
-      justify-content: flex-end;
+      /* display: flex; */
       gap: 1.2rem;
     }
   `;
