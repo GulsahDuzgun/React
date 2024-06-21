@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ButtonIcon from "../ui/ButtonIcon";
 import { HiOutlineUser } from "react-icons/hi2";
 import Logout from "../features/authentication/Logout";
+import DarkModeToggle from "./DarkModeToggle";
 
 export default function HeaderMenu() {
   const navigate = useNavigate();
@@ -18,6 +19,9 @@ export default function HeaderMenu() {
         <ButtonIcon onClick={() => navigate("/account")}>
           <HiOutlineUser />
         </ButtonIcon>
+      </li>
+      <li>
+        <DarkModeToggle />
       </li>
       <li>
         <Logout />
