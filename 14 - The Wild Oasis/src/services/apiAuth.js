@@ -1,4 +1,4 @@
-import supabase from "../services/supabase";
+import supabase, { supabaseUrl } from "../services/supabase";
 
 export async function loginUser({ email, password }) {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -32,6 +32,7 @@ export async function logout() {
 }
 
 export async function signUpUser({ email, password, fullName }) {
+  console.log(email, password);
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -43,4 +44,43 @@ export async function signUpUser({ email, password, fullName }) {
   if (error) throw new Error(error.message);
 
   return data;
+}
+
+export async function userDataUpdate({ fullName, password, avatar }) {
+  let updatedObj;
+  if (password)
+    updatedObj = {
+      password,
+    };
+  if (fullName)
+    updatedObj = {
+      data: {
+        fullName,
+      },
+    };
+
+  const { data, error } = await supabase.auth.updateUser(updatedObj);
+
+  if (error) throw new Error(error.message);
+  if (!avatar) return data;
+
+  const newImgUrl = `avatar-${data.user.id}-${Math.random()}`;
+  const { data: avatarData, error: loadingImgErrr } = await supabase.storage //load avattar image to storage
+    .from("avatars")
+    .upload(newImgUrl, avatar);
+
+  if (loadingImgErrr) throw new Error(loadingImgErrr.message);
+
+  const { data: updatedUserData, error: errorImgUrl } =
+    await supabase.auth.updateUser({
+      data: {
+        avatar: `${supabaseUrl}/storage/v1/object/public/avatars/${newImgUrl}`,
+      },
+    });
+
+  if (errorImgUrl) throw new Error(errorImgUrl.message);
+
+  console.log(avatarData);
+  console.log(updatedUserData);
+  return updatedUserData;
 }

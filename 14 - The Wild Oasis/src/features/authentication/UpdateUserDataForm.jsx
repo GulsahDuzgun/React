@@ -7,11 +7,12 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 
 import { useUser } from "./useUser";
+import { useUpdateUser } from "./useUpdateUser";
 
 function UpdateUserDataForm() {
   // We don't need the loading state, and can immediately use the user data, because we know that it has already been loaded at this point
   const {
-    user: {
+    userData: {
       email,
       user_metadata: { fullName: currentFullName },
     },
@@ -19,9 +20,26 @@ function UpdateUserDataForm() {
 
   const [fullName, setFullName] = useState(currentFullName);
   const [avatar, setAvatar] = useState(null);
+  const { userDataUpdateFunc, userDataUpdateLoading } = useUpdateUser();
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!fullName) return;
+
+    userDataUpdateFunc(
+      { fullName, avatar },
+      {
+        onSuccess: () => {
+          setAvatar(null);
+        },
+      }
+    );
+  }
+
+  function handleCancel() {
+    setFullName(currentFullName);
+    setAvatar(null);
   }
 
   return (
@@ -32,8 +50,11 @@ function UpdateUserDataForm() {
       <FormRow label="Full name">
         <Input
           type="text"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
+          disabled={userDataUpdateLoading}
+          defaultValue={fullName}
+          onChange={(e) => {
+            setFullName(e.target.value);
+          }}
           id="fullName"
         />
       </FormRow>
@@ -41,14 +62,22 @@ function UpdateUserDataForm() {
         <FileInput
           id="avatar"
           accept="image/*"
+          disabled={userDataUpdateLoading}
           onChange={(e) => setAvatar(e.target.files[0])}
         />
       </FormRow>
       <FormRow>
-        <Button type="reset" variation="secondary">
+        <Button
+          type="reset"
+          variation="secondary"
+          disabled={userDataUpdateLoading}
+          onClick={handleCancel}
+        >
           Cancel
         </Button>
-        <Button>Update account</Button>
+        <Button onClick={handleSubmit} disabled={userDataUpdateLoading}>
+          Update account
+        </Button>
       </FormRow>
     </Form>
   );

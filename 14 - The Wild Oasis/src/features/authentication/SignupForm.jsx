@@ -9,21 +9,20 @@ import { useSignUp } from "./useSignUp";
 
 function SignupForm() {
   const { signUpFunc, isSingUpLoading } = useSignUp();
-  const { register, formState, getValues, handleSubmit } = useForm();
+  const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
   function handleFormSubmit(data) {
-    console.log(data);
     const { email, password, fullName } = data;
     signUpFunc({ email, password, fullName });
   }
 
-  function handleFormSubmitErr(data) {
-    console.error(data);
-  }
+  // function handleFormSubmitErr(data) {
+  //   // console.error(data);
+  // }
 
   return (
-    <Form onSubmit={handleSubmit(handleFormSubmit, handleFormSubmitErr)}>
+    <Form onSubmit={handleSubmit(handleFormSubmit)}>
       <FormRow label="Full name" error={errors?.fullName?.message}>
         <Input
           type="text"
@@ -81,7 +80,12 @@ function SignupForm() {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" disabled={isSingUpLoading} type="reset">
+        <Button
+          variation="secondary"
+          disabled={isSingUpLoading}
+          type="reset"
+          onClick={reset}
+        >
           Cancel
         </Button>
 
