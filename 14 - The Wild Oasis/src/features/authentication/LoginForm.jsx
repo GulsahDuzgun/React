@@ -27,7 +27,7 @@ function LoginForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <FormRow label="Email address">
+      <FormRow isHorizantal={false} label="Email address">
         <Input
           type="email"
           id="email"
@@ -38,7 +38,7 @@ function LoginForm() {
           disabled={isLoginLoading}
         />
       </FormRow>
-      <FormRow label="Password">
+      <FormRow isHorizantal={false} label="Password">
         <Input
           type="password"
           id="password"
@@ -48,7 +48,7 @@ function LoginForm() {
           disabled={isLoginLoading}
         />
       </FormRow>
-      <FormRow>
+      <FormRow isHorizantal={false}>
         <Button size="large" disabled={isLoginLoading}>
           {isLoginLoading ? <SpinnerMini /> : "Login"}
         </Button>
