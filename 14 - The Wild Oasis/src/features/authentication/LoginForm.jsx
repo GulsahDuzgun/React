@@ -14,7 +14,15 @@ function LoginForm() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) return;
-    loginFnc({ email, password });
+    loginFnc(
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail("");
+          setPassword("");
+        },
+      }
+    );
   }
 
   return (
