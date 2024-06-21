@@ -65,7 +65,8 @@ export async function userDataUpdate({ fullName, password, avatar }) {
   if (!avatar) return data;
 
   const newImgUrl = `avatar-${data.user.id}-${Math.random()}`;
-  const { data: avatarData, error: loadingImgErrr } = await supabase.storage //load avattar image to storage
+  //load avattar image to storage
+  const { error: loadingImgErrr } = await supabase.storage
     .from("avatars")
     .upload(newImgUrl, avatar);
 
@@ -80,7 +81,5 @@ export async function userDataUpdate({ fullName, password, avatar }) {
 
   if (errorImgUrl) throw new Error(errorImgUrl.message);
 
-  console.log(avatarData);
-  console.log(updatedUserData);
   return updatedUserData;
 }
