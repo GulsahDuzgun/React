@@ -1,40 +1,47 @@
-import { useState } from "react";
 import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRow from "../../ui/FormRow";
 import SpinnerMini from "../../ui/SpinnerMini";
 import { useLogin } from "./useLogin";
+import { useForm } from "react-hook-form";
 
 function LoginForm() {
-  const [email, setEmail] = useState("gulsah.duzgun@testmail.com");
-  const [password, setPassword] = useState("12qwAS");
+  const { register, handleSubmit, reset } = useForm();
+
   const { loginFnc, isLoginLoading } = useLogin();
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function submitLoginInfo(data) {
+    console.log(data);
+    const { email, password } = data;
+
     if (!email || !password) return;
+
     loginFnc(
       { email, password },
       {
         onSettled: () => {
-          setEmail("");
-          setPassword("");
+          reset();
         },
       }
     );
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit(submitLoginInfo)}>
       <FormRow isHorizantal={false} label="Email address">
         <Input
           type="email"
           id="email"
           // This makes this form better for password managers
           autoComplete="username"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          {...register("email", {
+            required: "This field is required",
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "Please provide a valid email",
+            },
+          })}
           disabled={isLoginLoading}
         />
       </FormRow>
@@ -43,9 +50,12 @@ function LoginForm() {
           type="password"
           id="password"
           autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          disabled={isLoginLoading}
+          {...register("password", {
+            min: {
+              value: 8,
+              message: "Password should be 8 characters",
+            },
+          })}
         />
       </FormRow>
       <FormRow isHorizantal={false}>
