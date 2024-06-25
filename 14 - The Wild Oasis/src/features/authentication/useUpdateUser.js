@@ -9,7 +9,6 @@ export function useUpdateUser() {
     useMutation({
       mutationFn: userDataUpdate,
       onSuccess: (updatedUserData) => {
-        console.log(updatedUserData);
         toast.success("Changes have been updated");
         queryClient.setQueryData(["user"], updatedUserData.user);
         queryClient.invalidateQueries({ queryKey: ["user"] });

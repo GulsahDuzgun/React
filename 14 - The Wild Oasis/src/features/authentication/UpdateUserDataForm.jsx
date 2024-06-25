@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
 import Form from "../../ui/Form";
@@ -8,6 +6,7 @@ import Input from "../../ui/Input";
 
 import { useUser } from "./useUser";
 import { useUpdateUser } from "./useUpdateUser";
+import { useForm } from "react-hook-form";
 
 function UpdateUserDataForm() {
   // We don't need the loading state, and can immediately use the user data, because we know that it has already been loaded at this point
@@ -18,44 +17,42 @@ function UpdateUserDataForm() {
     },
   } = useUser();
 
-  const [fullName, setFullName] = useState(currentFullName);
-  const [avatar, setAvatar] = useState(null);
+  const { register, handleSubmit, reset } = useForm();
   const { userDataUpdateFunc, userDataUpdateLoading } = useUpdateUser();
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function updateUserAvatar(data) {
+    const { fullName, avatar } = data;
 
     if (!fullName) return;
 
     userDataUpdateFunc(
-      { fullName, avatar },
+      { fullName, avatar: avatar?.length === 0 ? null : avatar?.[0] },
       {
         onSuccess: () => {
-          setAvatar(null);
+          reset();
         },
       }
     );
   }
 
   function handleCancel() {
-    setFullName(currentFullName);
-    setAvatar(null);
+    reset();
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit(updateUserAvatar)}>
       <FormRow label="Email address">
         <Input value={email} disabled />
       </FormRow>
       <FormRow label="Full name">
         <Input
+          id="fullName"
           type="text"
           disabled={userDataUpdateLoading}
-          defaultValue={fullName}
-          onChange={(e) => {
-            setFullName(e.target.value);
-          }}
-          id="fullName"
+          defaultValue={currentFullName}
+          {...register("fullName", {
+            required: "This field is required",
+          })}
         />
       </FormRow>
       <FormRow label="Avatar image">
@@ -63,7 +60,7 @@ function UpdateUserDataForm() {
           id="avatar"
           accept="image/*"
           disabled={userDataUpdateLoading}
-          onChange={(e) => setAvatar(e.target.files[0])}
+          {...register("avatar")}
         />
       </FormRow>
       <FormRow>
@@ -75,7 +72,7 @@ function UpdateUserDataForm() {
         >
           Cancel
         </Button>
-        <Button onClick={handleSubmit} disabled={userDataUpdateLoading}>
+        <Button type="submit" disabled={userDataUpdateLoading}>
           Update account
         </Button>
       </FormRow>
