@@ -12,7 +12,6 @@ function LoginForm() {
   const { loginFnc, isLoginLoading } = useLogin();
 
   function submitLoginInfo(data) {
-    console.log(data);
     const { email, password } = data;
 
     if (!email || !password) return;
@@ -43,6 +42,7 @@ function LoginForm() {
             },
           })}
           disabled={isLoginLoading}
+          defaultValue={"caxamad240@luravel.com"}
         />
       </FormRow>
       <FormRow isHorizantal={false} label="Password">
@@ -50,6 +50,7 @@ function LoginForm() {
           type="password"
           id="password"
           autoComplete="current-password"
+          defaultValue={"test1234"}
           {...register("password", {
             min: {
               value: 8,
