@@ -88,6 +88,8 @@ function Toggle({ id }) {
     useContext(MenuContext);
 
   function handleClick(e) {
+    e.stopPropagation();
+    // console.log("target click");
     openId !== id || openId === "" ? assignOpenId(id) : emptyOpenId();
 
     const rect = e.target.closest("button").getBoundingClientRect();
@@ -106,7 +108,12 @@ function Toggle({ id }) {
 
 function List({ id, children }) {
   const { openId, position, emptyOpenId } = useContext(MenuContext);
-  const ref = useCapture(emptyOpenId);
+  const ref = useCapture(emptyOpenId, false);
+  // const ref = useCapture(() => {
+  //   console.log("outside");
+
+  //   emptyOpenId();
+  // }, false);
   if (id !== openId) return null;
 
   return createPortal(
