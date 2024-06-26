@@ -1,4 +1,6 @@
-### What did I learn while coding this project?
+## Pizza Menu
+
+#### What did I learn while coding this project?
 
 > #
 >
@@ -13,3 +15,10 @@
 > - _React.Fragment lets us group some elements without leaving any trace in the HTML tree, in the DOM and it allows us to define key property.,_
 >
 > #
+
+The end version of the project is below ⬇
+<br/>
+<img src="../ReadME__img/pizzaMenu.png" alt="Far Away">
+<br/>
+<br/>
+<br/>
