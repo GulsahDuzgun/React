@@ -32,156 +32,156 @@ You can try by clicking <strong>[ The Wild Oasis ](https://the-wild-oasis-gldn.n
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--1.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--1.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--2.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--2.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--3.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--3.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--4.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--4.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--5.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--5.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--6.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--6.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--7.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--7.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--8.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--8.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--9.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--9.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--10.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--10.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--11.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--11.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--12.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--12.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--13.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--13.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--14.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--14.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--15.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--15.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--16.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--16.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--17.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--17.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--18.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--18.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--19.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--19.png" alt=" The Wild Oasis">
 <br/>
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--20.png" alt=" The Wild Oasis">
-<br/>
-
- <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--21.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--20.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--22.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--21.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--23.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--22.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--24.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--23.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--25.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--24.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--26.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--25.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--27.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--26.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--28.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--27.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--29.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--28.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--30.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--29.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--31.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--30.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--32.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--31.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--33.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--32.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--34.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--33.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--35.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--34.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--36.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--35.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--37.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--36.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--38.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--37.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--39.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--38.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--40.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--39.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--41.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--40.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--42.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--41.png" alt=" The Wild Oasis">
 <br/>
 
  <br/> 
-   <img src="./ReadME__img/14 - The Wild Oasis/the-wild-oasis--43.png" alt=" The Wild Oasis">
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--42.png" alt=" The Wild Oasis">
+<br/>
+
+ <br/> 
+   <img src="../ReadME__img/14 - The Wild Oasis/the-wild-oasis--43.png" alt=" The Wild Oasis">
 <br/>
 
 ### What did I learn while coding this project?
