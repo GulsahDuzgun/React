@@ -10,3 +10,20 @@
 > - _When building a component, imagine its view as a reflection of state changing over time. For data that should not trigger component re-renders, don't use state. Use a regular variable instead. ,_
 >
 > #
+
+The end version of the project is below ⬇
+<br/>
+<img src="../ReadME__img/03 - Steps/steps--1.png" alt="Steps">
+<br/>
+<br/>
+<img src="../ReadME__img/03 - Steps/steps--2.png" alt="Steps">
+<br/>
+<br/>
+<img src="../ReadME__img/03 - Steps/steps--3.png" alt="Steps">
+<br/>
+
+<br/>
+<br/>
+
+<br/>
+<br/>
